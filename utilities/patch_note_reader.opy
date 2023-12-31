@@ -49,10 +49,11 @@ rule "Show menu in spawn":
     if not eventPlayer.isInSpawnRoom() or not eventPlayer.isHoldingButton(Button.INTERACT):
         return
 
+    eventPlayer.disableGamemodeHud()
     read_patch_notes_data()
 
     waitUntil(not eventPlayer.isHoldingButton(Button.INTERACT), 99999)
-
+    eventPlayer.enableGamemodeHud()
     clear_text_from_screen()
 
     if RULE_CONDITION:

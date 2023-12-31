@@ -2,6 +2,7 @@
 
 playervar damageMod
 globalvar LGBT_HEROES = [Hero.LIFEWEAVER, Hero.BAPTISTE, Hero.TRACER, Hero.PHARAH, Hero.MAUGA]
+globalvar debug = createWorkshopSetting(bool, "DEVELOPMENT", "DEBUG", true, 0)
 
 rule "LGBTQ Heroes Damage Mod":
     @Event eachPlayer
@@ -16,3 +17,11 @@ rule "General Init":
     @Event eachPlayer
 
     eventPlayer.addHealthPool(Health.SHIELDS, 100, true, false)
+
+rule "Global Init":
+    @Event global
+
+    if debug:
+        pass
+    else:
+        disableInspector()
