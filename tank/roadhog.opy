@@ -9,6 +9,14 @@ rule "Roadhog init":
 
     eventPlayer.setSecondaryFireEnabled(false)
 
+rule "Roadhog dies to Symmetra - Disable":
+    @Event playerDied
+    @Hero roadhog
+    @Condition attacker.currentHero == Hero.SYMMETRA
+
+    attacker.addHealthPool(Health.ARMOR, 50, true, false)
+    attacker.setUltCharge(attacker.getUltCharge() + 50)
+
 
 rule "Roadhog Stank":
     @Event eachPlayer
@@ -93,8 +101,9 @@ rule "Roadhog Whole Hog":
 rule "Roadhog Patch Notes":
     @Event eachPlayer
     @Hero roadhog
+    @Disabled
 
-    eventPlayer.patchNotesData.append([["New Name: Tier 2 Wanna-Be", -3, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["New Name: Tier 2 Wanna-Be", -3, Color.WHITE]])
     eventPlayer.patchNotesData.append([["NEW PASSIVE: {} Stank: Enemies near Tier 2 Wanna-Be take exponential damage due to his odor.".format(iconString(Icon.POISON)), -2, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Quick Melee has a 10% chance of damaging enemies regardless of distance.".format(abilityIconString(Hero.ROADHOG, Button.MELEE)), -1, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Take a Breather disabled. He is too powerful to need it.".format(abilityIconString(Hero.ROADHOG, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])

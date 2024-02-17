@@ -75,6 +75,7 @@ rule "Junker Queen Rampage Mines":
 rule "Junker Queen Patch Notes":
     @Event eachPlayer
     @Hero junkerQueen
+    @Disabled
     
     eventPlayer.patchNotesData.append([["{} removed. Do not look in the bottom right corner.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.PRIMARY_FIRE)), 0, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Connecting Jagged Blade will now magnetize her to the victim.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])

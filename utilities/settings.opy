@@ -1,12 +1,7 @@
-#!mainFile "../main.opy"
 settings {
     "main": {
         "description": "Overcringe",
         "modeName": "Every hero has had an extensive list of random changes that changes the way each plays."
-    },
-    "lobby": {
-        "team1Slots": 5,
-        "team2Slots": 5
     },
     "gamemodes": {
         "assault": {},
@@ -21,9 +16,20 @@ settings {
             "tankPassiveHealthBonus": "alwaysEnabled"
         }
     },
-    "workshop": {
-        "Debug": false
+    "heroes": {
+        "allTeams": {
+            "hammond": {
+                "ultKb%": 400,
+                "enableInfiniteAmmo": true,
+                "enablePrimaryFire": false
+            },
+            "zarya": {
+                "health%": 200,
+                "enableInfiniteAmmo": true,
+                "ability1Cooldown%": 50,
+                "secondaryFireKb%": 200,
+                "ability2Cooldown%": 50
+            }
+        }
     }
 }
-
-

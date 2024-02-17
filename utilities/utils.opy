@@ -7,6 +7,9 @@ playervar prevMoveSpeed
 playervar gravity = 100
 playervar prevGravity
 
+playervar healthMax = 100
+playervar prevHealthMax
+
 playervar currentHero
 
 playervar effects
@@ -67,7 +70,9 @@ rule "Spawn Dummy Bots":
     @Condition debug
     @Condition hostPlayer.isHoldingButton(Button.INTERACT)
     
-    createDummy(Hero.ANA, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.ROADHOG, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    wait()
+    getPlayersOnHero(Hero.ROADHOG, Team.ALL).startForcingButton(Button.PRIMARY_FIRE)
 
 rule "Dummy bot died - Delete":
     @Event playerDied
@@ -107,6 +112,16 @@ rule "Update Gravity":
         wait(0.25)
     while RULE_CONDITION
 
+rule "Update Health":
+    @Event eachPlayer
+    @Condition eventPlayer.healthMax != eventPlayer.prevHealthMax
+
+    do:
+        eventPlayer.setMaxHealth(eventPlayer.healthMax)
+        eventPlayer.prevHealthMax = eventPlayer.healthMax
+        wait(0.25)
+    while RULE_CONDITION
+
 rule "Hero Changed - Reset":
     @Event eachPlayer
     @Condition eventPlayer.currentHero != eventPlayer.getCurrentHero()
@@ -116,6 +131,7 @@ rule "Hero Changed - Reset":
 
     
     eventPlayer.setProjectileSpeed(100)
+    eventPlayer.setJumpVerticalSpeed(100)
 
     eventPlayer.removeAllHealthPools()
     eventPlayer.addHealthPool(Health.SHIELDS, 100, true, false)
@@ -125,4 +141,5 @@ rule "Hero Changed - Reset":
     eventPlayer.patchNotesData = []
     eventPlayer.moveSpeed = 100
     eventPlayer.gravity = 100
+    eventPlayer.healthMax = 100
     

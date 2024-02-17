@@ -49,9 +49,10 @@ rule "Doomfist Meteor Strike":
 rule "Doomfist Patch Notes":
     @Event eachPlayer
     @Hero doomfist
+    @Disabled
     
     eventPlayer.patchNotesData.append([["{} Rocket Punch moves incredibly slowly.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} damage dealt by Rocket Punch increased by 500%.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Damage dealt by Rocket Punch increased by 500%.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Rocket Punch tires Doomfist, slowing him down after use.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 2, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Seismic Slam Now has 500% gravity and 250% speed.".format(abilityIconString(Hero.DOOMFIST, Button.ABILITY_1)), 3, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Power Block Knocks an enemy in front of Doomfist down for 1 second.".format(abilityIconString(Hero.DOOMFIST, Button.ABILITY_2)), 4, Color.YELLOW]])

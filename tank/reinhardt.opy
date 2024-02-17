@@ -14,6 +14,7 @@ rule "Reinhardt Charge":
     eventPlayer.setDamageDealt(500)
     eventPlayer.moveSpeed -= 135
     waitUntil(not eventPlayer.isUsingAbility1(), 9999)
+    wait()
     eventPlayer.setDamageDealt(100)
     eventPlayer.moveSpeed += 135
 
@@ -37,6 +38,7 @@ rule "Reinhardt Earthshatter":
 rule "Reinhardt Patch Notes":
     @Event eachPlayer
     @Hero reinhardt
+    @Disabled
 
     eventPlayer.patchNotesData.append([["Base move speed increased by 50%.", 0, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Charge deals 400% more damage. Moves 90% slower.".format(abilityIconString(Hero.REINHARDT, Button.ABILITY_1)), 1, Color.YELLOW]])

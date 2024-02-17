@@ -1,7 +1,8 @@
 #!mainFile "../main.opy"
 
 playervar damageMod
-globalvar LGBT_HEROES = [Hero.LIFEWEAVER, Hero.BAPTISTE, Hero.TRACER, Hero.PHARAH, Hero.MAUGA]
+#Before you ask, I am gay.
+globalvar LGBT_HEROES = [Hero.LIFEWEAVER, Hero.BAPTISTE, Hero.TRACER, Hero.PHARAH, Hero.MAUGA, Hero.SOLDIER]
 globalvar debug = createWorkshopSetting(bool, "DEVELOPMENT", "DEBUG", true, 0)
 
 rule "LGBTQ Heroes Damage Mod":

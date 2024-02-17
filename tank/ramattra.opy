@@ -74,6 +74,7 @@ rule "Ramattra Annihilation":
 rule "Ramattra Patch Notes":
     @Event eachPlayer
     @Hero ramattra
+    @Disabled
 
     eventPlayer.patchNotesData.append([["{} Void Barrier grants a 50% speed buff while holding his hand out.".format(abilityIconString(Hero.RAMATTRA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Nemesis Form grants a 200% jump height increase while active.".format(abilityIconString(Hero.RAMATTRA, Button.ABILITY_1)), 1, Color.YELLOW]])

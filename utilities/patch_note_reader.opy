@@ -14,6 +14,8 @@ def clear_text_from_screen():
 
 
 def read_patch_notes_data():
+    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), null, null, HudPosition.LEFT, -100, Color.WHITE, null, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
     for eventPlayer.i in range(0, len(eventPlayer.patchNotesData)):
         hudText(eventPlayer, 
                 null, 

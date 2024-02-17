@@ -32,8 +32,8 @@ rule "D.Va Self Destruct":
 rule "D.Va patch notes":
     @Event eachPlayer
     @Hero dva
+    @Disabled
 
-    wait(0, Wait.RESTART_WHEN_TRUE)
     eventPlayer.patchNotesData.append([["{} Fusion Cannons now instantly de-mechs D.Va.".format(abilityIconString(Hero.DVA, Button.PRIMARY_FIRE)), 0, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Defense Matrix now lasts indefinitely, with a ten second cooldown.".format(abilityIconString(Hero.DVA, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Eliminating enemies with an ultimate will now grant your team 50 overhealth.".format(abilityIconString(Hero.DVA, Button.ULTIMATE)), 2, Color.SKY_BLUE]])
