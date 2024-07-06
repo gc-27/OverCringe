@@ -39,7 +39,6 @@ rule "Sigma Gravitic Flux":
 rule "Sigma Patch Notes":
     @Event eachPlayer
     @Hero sigma
-    @Disabled
 
     eventPlayer.patchNotesData.append([["Base move speed reduced by 25%.", 0, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Kinetic Grasp now absorbs enemies, adding their health pool to Sigma's as Overhealth.".format(abilityIconString(Hero.SIGMA, Button.ABILITY_1)), 1, Color.YELLOW]])

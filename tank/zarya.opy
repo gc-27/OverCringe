@@ -39,3 +39,17 @@ rule "Zarya Graviton Surge":
         wait()
     destroyEffect(eventPlayer.effects[0])
     stopChasingVariable(eventPlayer.var1)
+
+rule "Zarya Patch Notes":
+    @Event eachPlayer
+    @Hero zarya
+
+    eventPlayer.patchNotesData.append([["Health doubled", 0, Color.WHITE]])
+    eventPlayer.patchNotesData.append([["{} No longer has ammo requirement, secondary fire knockback doubled.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Cooldown reduced to 5s, damages Zarya for 50% of current health every use.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Cooldown reduced to 4 seconds.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Instantly kills Zarya, creating a black hole that slowly engulfs the map and".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
+    eventPlayer.patchNotesData.append([["{} kills all players that touch it. Disappears after Zarya respawns.".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
+    
+    
+    

@@ -49,7 +49,6 @@ rule "Doomfist Meteor Strike":
 rule "Doomfist Patch Notes":
     @Event eachPlayer
     @Hero doomfist
-    @Disabled
     
     eventPlayer.patchNotesData.append([["{} Rocket Punch moves incredibly slowly.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Damage dealt by Rocket Punch increased by 500%.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])

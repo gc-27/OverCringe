@@ -63,3 +63,15 @@ rule "Winston Primal Rage Ball":
     wait(0.656)
     if RULE_CONDITION:
         goto RULE_START
+
+rule "Winston Patch Notes":
+    @Event eachPlayer
+    @Hero winston
+
+    eventPlayer.patchNotesData.append([["{} Now deals massive damage to any players you directly land on.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Cooldown during Primal Rage reduced to 0 seconds.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Deals damage over time to Lucio while he is in the bubble. For you, Juuzou.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Pressing Secondary Fire tosses a small bouncy ball.".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 4, Color.SKY_BLUE]])
+    
+    
+    

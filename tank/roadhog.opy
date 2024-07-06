@@ -101,7 +101,6 @@ rule "Roadhog Whole Hog":
 rule "Roadhog Patch Notes":
     @Event eachPlayer
     @Hero roadhog
-    @Disabled
 
     eventPlayer.patchNotesData.append([["New Name: Tier 2 Wanna-Be", -3, Color.WHITE]])
     eventPlayer.patchNotesData.append([["NEW PASSIVE: {} Stank: Enemies near Tier 2 Wanna-Be take exponential damage due to his odor.".format(iconString(Icon.POISON)), -2, Color.WHITE]])

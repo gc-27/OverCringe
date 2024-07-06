@@ -38,7 +38,6 @@ rule "Reinhardt Earthshatter":
 rule "Reinhardt Patch Notes":
     @Event eachPlayer
     @Hero reinhardt
-    @Disabled
 
     eventPlayer.patchNotesData.append([["Base move speed increased by 50%.", 0, Color.WHITE]])
     eventPlayer.patchNotesData.append([["{} Charge deals 400% more damage. Moves 90% slower.".format(abilityIconString(Hero.REINHARDT, Button.ABILITY_1)), 1, Color.YELLOW]])

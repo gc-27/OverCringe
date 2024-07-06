@@ -34,3 +34,16 @@ rule "Wrecking Ball Piledriver":
     victim.setStatusEffect(attacker, Status.KNOCKED_DOWN, 1)
 
 
+rule "Wrecking Ball Patch Notes":
+    @Event eachPlayer
+    @Hero hammond
+
+    eventPlayer.patchNotesData.append([["Base damage increased by 25%.", 0, Color.WHITE]])
+    eventPlayer.patchNotesData.append([["{} No longer has ammo requirement.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Move speed in crab form reduced to 50%. Crab form health pool increased by 300 armor.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Now provides 50 Overhealth to nearby teammates.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Now knocks opponents he hits down for one second.".format(abilityIconString(eventPlayer.currentHero, Button.CROUCH)), 4, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Knockback increased by 300%".format(abilityIconString(eventPlayer.currentHero, Button.CROUCH)), 5, Color.SKY_BLUE]])
+    
+    
+    

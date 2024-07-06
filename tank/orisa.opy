@@ -56,7 +56,6 @@ rule "Orisa Terra Surge":
 rule "Orisa Patch Notes":
     @Event eachPlayer
     @Hero orisa
-    @Disabled
 
     eventPlayer.patchNotesData.append([["{} Energy Javelin throws Orisa alongside a javelin.".format(abilityIconString(Hero.ORISA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Fortify now grants 500 overhealth and makes Orisa completely immobile.".format(abilityIconString(Hero.ORISA, Button.ABILITY_1)), 1, Color.YELLOW]])

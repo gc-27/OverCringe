@@ -72,7 +72,6 @@ rule "Mauga Cage Fight":
 rule "Mauga Patch Notes":
     @Event eachPlayer
     @Hero mauga
-    @Disabled
 
     eventPlayer.patchNotesData.append([["{} Overrun now teleports Mauga to a random person when he stomps.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_1)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Cardiac Overdrive now gives Mauga a heart attack if he doesn't deal 200 damage while active.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_2)), 1, Color.YELLOW]])
