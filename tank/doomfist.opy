@@ -26,7 +26,6 @@ rule "Doomfist Seismic Slam":
     eventPlayer.applyImpulse(eventPlayer.getFacingDirection(), 50, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
     eventPlayer.gravity += 400
     eventPlayer.moveSpeed += 150 
-    wait()
     waitUntil(not eventPlayer.isUsingAbility1(), 9999)
     eventPlayer.gravity -= 400
     eventPlayer.moveSpeed -= 150
@@ -36,7 +35,7 @@ rule "Doomfist Power Block Knockdown":
     @Hero doomfist
     @Condition eventPlayer.isUsingAbility2()
 
-    raycast(eventPlayer.getEyePosition(), eventPlayer.getEyePosition() + eventPlayer.getFacingDirection() * 5, getPlayers(getOppositeTeam(eventPlayer.getTeam())), eventPlayer, false).getPlayerHit().setStatusEffect(eventPlayer, Status.KNOCKED_DOWN, 1)
+    raycast(eventPlayer.getEyePosition(), eventPlayer.getEyePosition() + eventPlayer.getFacingDirection() * 3, getPlayers(getOppositeTeam(eventPlayer.getTeam())), eventPlayer, false).getPlayerHit().setStatusEffect(eventPlayer, Status.KNOCKED_DOWN, 1)
 
 rule "Doomfist Meteor Strike":
     @Event playerDealtDamage

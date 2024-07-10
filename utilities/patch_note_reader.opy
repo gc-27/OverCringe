@@ -36,6 +36,7 @@ def read_patch_notes_data():
 rule "Show menu in spawn":
     @Event eachPlayer
     @Condition eventPlayer.isInSpawnRoom()
+    @Disabled
 
     RULE_START
 

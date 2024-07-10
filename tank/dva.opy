@@ -1,25 +1,20 @@
 #!mainFile "../main.opy"
 
+playervar dvaMoveSpeed
+
 rule "D.Va matrix infinity":
     @Event eachPlayer
     @Hero dva
     @Condition eventPlayer.isFiringSecondaryFire()
 
-    do:
+    eventPlayer.dvaMoveSpeed = 0
+    while eventPlayer.isFiringSecondaryFire():
         eventPlayer.setAbilityResource(Button.SECONDARY_FIRE, 100)
+        eventPlayer.dvaMoveSpeed -= 0.1
+        eventPlayer.moveSpeed -= 0.1
         wait()
-
-
-    while RULE_CONDITION
+    eventPlayer.moveSpeed -= eventPlayer.dvaMoveSpeed
     eventPlayer.setAbilityCooldown(Button.SECONDARY_FIRE, 10)
-
-rule "D.Va Fusion Cannons":
-    @Event eachPlayer
-    @Hero dva
-    @Condition eventPlayer.isHoldingButton(Button.PRIMARY_FIRE)
-    @Condition not eventPlayer.isInAlternateForm()
-
-    kill(eventPlayer, null)
 
 
 rule "D.Va Self Destruct":

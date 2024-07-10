@@ -1,7 +1,5 @@
 #!mainFile "../main.opy"
 
-playervar stunnedByRam 
-
 
 rule "Ramattra Void Barrier":
     @Event eachPlayer
@@ -12,24 +10,8 @@ rule "Ramattra Void Barrier":
     @Condition eventPlayer.isMoving() == true
     
     eventPlayer.moveSpeed += 50
-    while eventPlayer.isFiringSecondaryFire():
-        eventPlayer.var1 = [player for player in getPlayersInRadius(eventPlayer, 3, getOppositeTeam(eventPlayer.getTeam()), LosCheck.OFF) if eventPlayer.isInViewAngle(player, 45)]
-        for eventPlayer.i in range(len(eventPlayer.var1)):
-            if eventPlayer.var1[eventPlayer.i].stunnedByRam == null:
-                eventPlayer.var1[eventPlayer.i].stunnedByRam = eventPlayer
-        wait()
     waitUntil(not eventPlayer.isFiringSecondaryFire(), 99999)
     eventPlayer.moveSpeed -= 50
-
-
-rule "Ramattra Void Barrier Stun":
-    @Event eachPlayer
-    @Condition eventPlayer.stunnedByRam != null
-    
-    eventPlayer.setStatusEffect(eventPlayer.stunnedByRam, Status.KNOCKED_DOWN, 1)
-    damage(eventPlayer, eventPlayer.stunnedByRam, 25)
-    wait(4)
-    eventPlayer.stunnedByRam = null
 
 
 rule "Ramattra Nemesis Form":

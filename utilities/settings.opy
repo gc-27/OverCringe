@@ -1,8 +1,8 @@
 #!mainFile "../main.opy"
 settings {
     "main": {
-        "description": "Overcringe",
-        "modeName": "Every hero has had an extensive list of random changes that changes the way each plays."
+        "description": "OverCringe 2.0",
+        "modeName": '"Tournament Ready"'
     },
     "gamemodes": {
         "assault": {},
