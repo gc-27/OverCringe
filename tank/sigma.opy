@@ -77,10 +77,3 @@ rule "Sigma Patch Notes":
     @Hero sigma
 
     eventPlayer.hero_description = "Seriously, what is that melody?"
-    eventPlayer.patchNotesData.append([["No longer affected by gravity.", 0, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} Will now pull a closeby enemy in front of Sigma, allowing him to move them during the duration of the ability.".format(abilityIconString(Hero.SIGMA, Button.ABILITY_1)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Accretion sends hit enemies towards Sigma.".format(abilityIconString(Hero.SIGMA, Button.ABILITY_2)), 3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Enemies now bounce upon landing.".format(abilityIconString(Hero.SIGMA, Button.ULTIMATE)), 1, Color.SKY_BLUE]])
-    
-    
-    

@@ -56,13 +56,7 @@ rule "Zarya Patch Notes":
     @Hero zarya
 
     eventPlayer.hero_description = "Fire at... Will? Who's Will?"
-    eventPlayer.patchNotesData.append([["{} Secondary fire knockback doubled.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Grants a 50 hp Overhealth pool after decaying.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Grants a 25% speed boost while active.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2.1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Disabled for 2 seconds after use.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2.2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Replaced with new Ultimate : {} 'Gravity Grenade'".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE), iconString(Icon.SPIRAL)), 4, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} Zarya shoots out a gravity charge that explodes on contact.".format(iconString(Icon.SPIRAL)), 5, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} Enemies that are hit with the blast are unable to move and become weightless for four seconds.".format(iconString(Icon.SPIRAL)), 6, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} Effect does not affect players that are Unstoppable.".format(iconString(Icon.SPIRAL)), 7, Color.RED]])
-    
-    
+    eventPlayer.patchNotes[1] = ["Knockback doubled."]
+    eventPlayer.patchNotes[2] = ["Grants a 50 HP Overhealth pool after decaying.", "Grants a 25% speed boost while active.", "Disabled for 2 seconds after use."]
+    eventPlayer.patchNotes[5] = ["Replaced with new Ultimate: {} 'Gravity Bomb'".format(iconString(Icon.SPIRAL)), "Zarya shoots out a gravity charge that explodes on impact.", "Enemies that are hit with the blast are unable to move, ", "and become weightless for four seconds."]
+    eventPlayer.patchNotes[6] = ["Effect of Gravity Bomb does not affect players that are Unstoppable.", "(Mauga's Overrun, Orisa's Fortify.)"]

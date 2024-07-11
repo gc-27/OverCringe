@@ -65,10 +65,3 @@ rule "Winston Patch Notes":
     @Hero winston
 
     eventPlayer.hero_description = "Guxue's dream."
-    eventPlayer.patchNotesData.append([["{} Secondary Fire now jumps between players.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Now deals massive damage to any players you directly land on.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Cooldown during Primal Rage reduced to 0 seconds.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Pressing Secondary Fire tosses a small bouncy ball.".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 4, Color.SKY_BLUE]])
-    
-    
-    

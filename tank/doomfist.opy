@@ -5,8 +5,8 @@ rule "Doomfist Init":
     @Hero doomfist
 
     eventPlayer.health_different = true
-    eventPlayer.health = 350
-    eventPlayer.armor = 200
+    eventPlayer.health = 400
+    eventPlayer.armor = 100
 
 
 rule "Doomfist Rocket Punch":
@@ -73,11 +73,9 @@ rule "Doomfist Patch Notes":
     @Hero doomfist
     
     eventPlayer.hero_description = "After years of powerblocking, he finally broke the gauntlet."
-    eventPlayer.patchNotesData.append([["{} Rocket Punch moves incredibly slowly.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Deals 200% extra knockback.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Rocket Punch tires Doomfist, slowing him down after use.".format(abilityIconString(Hero.DOOMFIST, Button.SECONDARY_FIRE)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Seismic Slam Now has 500% gravity and 250% speed.".format(abilityIconString(Hero.DOOMFIST, Button.ABILITY_1)), 3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Power Block Knocks an enemy in front of Doomfist down for 1 second.".format(abilityIconString(Hero.DOOMFIST, Button.ABILITY_2)), 4, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Meteor Strike Knocks enemies down and knocks them away from the epicenter.".format(abilityIconString(Hero.DOOMFIST, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} Now shows where Doomfist is for everyone.".format(abilityIconString(Hero.DOOMFIST, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
+    eventPlayer.patchNotes[0] = ["No longer has an ammo requirement."]
+    eventPlayer.patchNotes[1] = ["Move speed reduced to 10% while punching.", "Deals 200% more knockback.", "Has a small delay before you can move after punching."]
+    eventPlayer.patchNotes[2] = ["Travel speed increased to 250%."]
+    eventPlayer.patchNotes[3] = ["Knocks an enemy in front of Doomfist down for one second."]
+    eventPlayer.patchNotes[5] = ["Knocks enemies in the blast radius down for 2 seconds.", "Knocks enemies in the blast radius away.", "Doomfist can now be seen by all players while using."]
     

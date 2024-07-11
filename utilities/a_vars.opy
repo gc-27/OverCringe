@@ -9,9 +9,6 @@ playervar prevMoveSpeed
 playervar gravity = 100
 playervar prevGravity
 
-playervar healthMax = 100
-playervar prevHealthMax
-
 playervar currentHero
 playervar canUseAbilities = true
 playervar ccimmune = false
@@ -31,8 +28,9 @@ playervar shields
 
 playervar hero_description
 
-playervar patchNotesData = [] # 0: text, 1: sort order, 2: color
-
-playervar patchNotesText = []
-
 playervar i
+
+playervar patchNotesColorArray = [Color.WHITE, Color.WHITE, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.SKY_BLUE, Color.RED]
+playervar patchNotesButtonArray = [Button.PRIMARY_FIRE, Button.SECONDARY_FIRE, Button.ABILITY_1, Button.ABILITY_2, Button.CROUCH, Button.ULTIMATE, null]
+playervar patchNotes = [[], [], [], [], [], [], [], []] 
+playervar patchNotesText = []

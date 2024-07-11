@@ -50,12 +50,3 @@ rule "Wrecking Ball Patch Notes":
     @Hero hammond
 
     eventPlayer.hero_description = "I thought he didn't wreck enough."
-    eventPlayer.patchNotesData.append([["{} Damage increased by 25%.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} No longer has ammo requirement.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Move speed in crab form reduced to 50%. Crab form health pool increased by 300 armor.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Now provides 50 Overhealth to nearby teammates.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Now knocks opponents he hits down for one second.".format(abilityIconString(eventPlayer.currentHero, Button.CROUCH)), 4, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Knockback increased by 300%".format(abilityIconString(eventPlayer.currentHero, Button.CROUCH)), 5, Color.SKY_BLUE]])
-    
-    
-    

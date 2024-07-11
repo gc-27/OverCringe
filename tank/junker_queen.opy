@@ -102,9 +102,3 @@ rule "Junker Queen Patch Notes":
     @Hero junkerQueen
     
     eventPlayer.hero_description = "I thought it was too difficult to hit Scattergun, so I got rid of it."
-    eventPlayer.patchNotesData.append([["{} removed. Do not look in the bottom right corner.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.PRIMARY_FIRE)), 0, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} Now drops out of Junker Queen's hand.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} will pull Junker Queen back to the knife when called for.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Commanding Shout now damages nearby enemies for 25% of their current health.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ABILITY_1)), 3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Carnage replaces the Scattergun. MIssing now deals 200 self-damage.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ABILITY_2)), 4, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Rampage now leaves a trail of mines while casting.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ULTIMATE)), 5, Color.SKY_BLUE]])

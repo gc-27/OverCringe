@@ -37,7 +37,5 @@ rule "D.Va patch notes":
     @Condition not eventPlayer.isInAlternateForm()
 
     eventPlayer.hero_description = "This hopefully addresses the issue of D.Va dealing too much damage."
-    eventPlayer.patchNotesData.append([["{} Defense Matrix now lasts indefinitely, with a ten second cooldown.".format(abilityIconString(Hero.DVA, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Slowly reduces move speed while in use.".format(abilityIconString(Hero.DVA, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Eliminating enemies with an ultimate will now grant your team 50 overhealth.".format(abilityIconString(Hero.DVA, Button.ULTIMATE)), 2, Color.SKY_BLUE]])
-    
+    eventPlayer.patchNotes[1] = ["Now lasts indefinitely.", "Now has a 10 second cooldown.", "Slowly reduces move speed while in use."]
+    eventPlayer.patchNotes[5] = ["Eliminating enemies with Self Destruct or Call Mech", " will grant your team 50 overhealth."]

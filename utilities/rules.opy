@@ -40,16 +40,6 @@ rule "Update Gravity":
         wait(0.25)
     while RULE_CONDITION
 
-rule "Update Health":
-    @Event eachPlayer
-    @Condition eventPlayer.healthMax != eventPlayer.prevHealthMax
-
-    do:
-        eventPlayer.setMaxHealth(eventPlayer.healthMax)
-        eventPlayer.prevHealthMax = eventPlayer.healthMax
-        wait(0.25)
-    while RULE_CONDITION
-
 rule "Hero Changed - Reset":
     @Event eachPlayer
     @Condition eventPlayer.currentHero != eventPlayer.getCurrentHero()
@@ -67,10 +57,9 @@ rule "Hero Changed - Reset":
     eventPlayer.setJumpVerticalSpeed(100)
 
     eventPlayer.currentHero = eventPlayer.getCurrentHero()
-    eventPlayer.patchNotesData = []
+    eventPlayer.patchNotes = [[], [], [], [], [], [], [], []] 
     eventPlayer.moveSpeed = 100
     eventPlayer.gravity = 100
-    eventPlayer.healthMax = 100
     eventPlayer.health_different = false
     clear_player_health()
     wait(0.1)

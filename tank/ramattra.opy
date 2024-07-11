@@ -64,10 +64,3 @@ rule "Ramattra Patch Notes":
     @Hero ramattra
 
     eventPlayer.hero_description = "Ramattra is a very situational hero. I think he should be viable in ALL of them."
-    eventPlayer.patchNotesData.append([["{} Void Barrier grants a 50% speed buff while holding his hand out.".format(abilityIconString(Hero.RAMATTRA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Nemesis Form grants a 200% jump height increase while active.".format(abilityIconString(Hero.RAMATTRA, Button.ABILITY_1)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Ravenous Vortex sends enemies sky high.".format(abilityIconString(Hero.RAMATTRA, Button.ABILITY_2)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Annihilation reduces move speed by 50%. Can only melee and block.".format(abilityIconString(Hero.RAMATTRA, Button.ULTIMATE)), 3, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} Damage dealt by tendrils and melee increased 3x.".format(abilityIconString(Hero.RAMATTRA, Button.ULTIMATE)), 4, Color.SKY_BLUE]])
-    
-

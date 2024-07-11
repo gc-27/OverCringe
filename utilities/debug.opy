@@ -4,11 +4,20 @@ rule "Spawn Dummy Bots":
     @Event global
     @Condition debug
     @Condition hostPlayer.isHoldingButton(Button.INTERACT)
+    @Disabled
     
     createDummy(Hero.LIFEWEAVER, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
     #getLastCreatedEntity().startForcingButton(Button.PRIMARY_FIRE)
 
+rule "Display server performance characteristics":
+    @Condition debug
+    hudSubheader(getAllPlayers(), l"{0}: {1}".format(l"Server Load", l"{0}%".format(getServerLoad())), HudPosition.RIGHT, -1, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.DEFAULT)
+    hudSubheader(getAllPlayers(), l"{0}: {1}".format(l"Server Load Average", l"{0}%".format(getAverageServerLoad())), HudPosition.RIGHT, -0.9, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.DEFAULT)
+    hudSubheader(getAllPlayers(), l"{0}: {1}".format(l"Server Load Peak", l"{0}%".format(getPeakServerLoad())), HudPosition.RIGHT, -0.8, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.DEFAULT)
 
+
+
+    
 rule "Dummy bot died - Delete":
     @Event playerDied
     @Condition debug

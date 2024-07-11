@@ -122,11 +122,3 @@ rule "Roadhog Patch Notes":
     @Hero roadhog
 
     eventPlayer.hero_description = "Roadhog has been juicing."
-    eventPlayer.patchNotesData.append([["NEW PASSIVE: {} Stank: Enemies near Roadhog take exponential damage due to his odor.".format(iconString(Icon.POISON)), -2, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} Increases Roadhog's move speed by 25% during use.".format(abilityIconString(Hero.ROADHOG, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Replaced with new ability: {} Belly Flop".format(abilityIconString(Hero.ROADHOG, Button.ABILITY_2), iconString(Icon.ARROW_DOWN)), 1.1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Lunge into the air and slam on the ground.".format(iconString(Icon.ARROW_DOWN)), 1.2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} The higher the fall, the wider the area of effect.".format(iconString(Icon.ARROW_DOWN)), 1.3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Enemies you directly land on are stunned for a short period of time.".format(iconString(Icon.ARROW_DOWN)), 1.4, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Whole Hog sends Roadhog flying backwards when firing.".format(abilityIconString(Hero.ROADHOG, Button.ULTIMATE)), 3, Color.SKY_BLUE]])
-    

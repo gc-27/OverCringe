@@ -42,8 +42,3 @@ rule "Reinhardt Patch Notes":
     @Hero reinhardt
 
     eventPlayer.hero_description = "If only he had this armor during the crisis..."
-    eventPlayer.patchNotesData.append([["Base move speed increased by 50%.", 0, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} Charge deals 400% more damage. Moves 90% slower.".format(abilityIconString(Hero.REINHARDT, Button.ABILITY_1)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Fire Strike now has 100% lifesteal.".format(abilityIconString(Hero.REINHARDT, Button.ABILITY_2)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Earthshatter now stuns everyone on the ground when it hits.".format(abilityIconString(Hero.REINHARDT, Button.ULTIMATE)), 3, Color.SKY_BLUE]])
-    

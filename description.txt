@@ -11,6 +11,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "D.Va",
   description: "This finally addresses the problem of D.Va dealing too much damage.",
   abilities: {
+		"General Changes": ["Health pool changed to 175 health, 425 armor."],
     "Defense Matrix": [
       "Now lasts indefinitely",
 			"Now has a 10 second cooldown.",
@@ -28,11 +29,12 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Doomfist",
   description: "After years of powerblocking, he finally broke the gauntlet.",
   abilities: {
+		"General Changes": ["Health pool changed to 400 health, 100 armor."],
 		"Hand Cannon": ["No longer has an ammo requirement."],
 		"Rocket Punch": [
-		"Moves incredibly slowly.",
-		"Deals 200% extra knockback.",
-		"Has a small delay before you can move after using it."
+			"Move speed reduced to 10% while punching.",
+			"Deals 200% more knockback.",
+			"Has a small delay before you can move after punching."
 		],
     "Seismic Slam": [
       "Now has 500% gravity and 250% speed."
@@ -53,6 +55,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Junker Queen",
   description: "I thought it was too difficult to hit Scattergun, so I got rid of it.",
   abilities: {
+		"General Changes": ["Health pool changed to 400 health, 100 armor."],
     "Scattergun": [
       "Removed. Do not look in the bottom right corner.",
     ],
@@ -78,6 +81,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Mauga",
 	description: "Come on, stay a while...",
   abilities: {
+		"General Changes": ["Health pool changed to 400 health, 200 armor."],
     "Overrun": [
       "Enemies near Mauga during Overrun are set on fire."
     ],
@@ -99,6 +103,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero:  Orisa,
   description: Orisa doesn't have enough mobility.,
   abilities: {
+		"General Changes": ["Health pool changed to 200 health, 300 armor."],
 		Energy Javelin: [
 			Now throws Orisa alongside a javelin.
 		],
@@ -120,6 +125,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero:  Ramattra,
   description: Ramattra is a very situational hero. I think he should be viable in ALL of them.,
   abilities: {
+		"General Changes": ["Health pool changed to 200 health, 250 armor."],
 		Void Barrier (Omnic Form): ["While holding out his hand to use Void Barrier, Ramattra will run 50% faster."],
     Nemesis Form: [Increases jump height by 200%.],
 		Ravenous Vortex: [Now sends enemies sky-high.],
@@ -137,6 +143,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: Reinhardt ,
   description: "Personally I want Reinhardt to be obliterating anyone he comes across, and be very self-sufficient.",
   abilities: {
+		"General Changes": ["Health pool changed to 300 health, 250 armor."],
 		General: [Base Move Speed Increased by 50%.],
     Charge: [Deals 400% more damage. I forgot the number., Moves 90% slower.],
     Fire Strike: [Now has 100% lifesteal.],
@@ -149,6 +156,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: Roadhog,
   description: "Roadhog has been juicing.",
   abilities: {
+		"General Changes": ["Health pool changed to 450 health, 150 armor."],
 		Pig Pen: ["Now replaced with new ability: Belly Flop"],
 		Belly Flop: ["Roadhog slams on the ground, knocking enemies that he lands on down.", "Damage and stun duration is increased based on how long Roadhog travels for."],
     Take A Breather: [Now increases Roadhog's move speed by 25% while in use.],
@@ -162,9 +170,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Sigma",
   description: "No longer bound by the limitations of Gravity, Sigma now looks to achieve nirvana.",
   abilities: {
-		"General": [
-		"Now floats at all times. Vertical movement is controlled with Crouch and Jump keys."
-		],
+		"General Changes": ["Health pool changed to 300 health, 250 armor.", "Now floats at all times.", "Vertical movement is controlled with Crouch and Jump keys."],
     "Kinetic Grasp": [
       "Will now pull a closeby enemy in front of Sigma, allowing him to move them during the duration of the ability."
     ],
@@ -183,6 +189,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Winston",
   description: "Grrrrreeetings!",
   abilities: {
+		"General Changes": ["Health pool changed to 350 health, 150 armor."],
 		"Tesla Cannon": [ "Secondary Fire now jumps to enemies.", "Jumped attacks deal 50% less damage for each jump."],
     "Jump Pack": [
       "Now deals massive damage to players you directly land on.",
@@ -202,6 +209,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Wrecking Ball",
   description: "I thought he didn't wreck enough.",
   abilities: {
+		"General Changes": ["Health pool changed to 100 health, 400 armor, 100 shields."],
 		"Quad Cannons": [ "No longer has ammo requirement.", "Damage increased by 25%."],
     "Roll": [
       "Move speed outside of ball form reduced to 50%.",
@@ -224,6 +232,7 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Zarya",
   description: "Fire at... Will? Who's Will?",
   abilities: {
+		"General Changes": ["Health pool changed to 250 health, 250 shields."],
     "Particle Cannon": [
 			"Secondary fire knockback increased by 100%."
     ],

@@ -66,8 +66,3 @@ rule "Orisa Patch Notes":
     @Hero orisa
 
     eventPlayer.hero_description = "Orisa isn't mobile enough."
-    eventPlayer.patchNotesData.append([["{} Energy Javelin throws Orisa alongside a javelin.".format(abilityIconString(Hero.ORISA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Fortify now grants 500 overhealth and makes Orisa completely immobile.".format(abilityIconString(Hero.ORISA, Button.ABILITY_1)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Javelin Spin now allows Orisa to fly, and pulls enemies towards her.".format(abilityIconString(Hero.ORISA, Button.ABILITY_2)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Terra Surge now provides Overhealth to teammates near Orisa.".format(abilityIconString(Hero.ORISA, Button.ULTIMATE)), 3, Color.SKY_BLUE]])
-    

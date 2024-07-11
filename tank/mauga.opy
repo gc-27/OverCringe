@@ -87,10 +87,3 @@ rule "Mauga Patch Notes":
     @Hero mauga
 
     eventPlayer.hero_description = "He's been struggling recently. He misses Baptiste."
-    eventPlayer.patchNotesData.append([["{} Overrun now sets players near Mauga on fire when used.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_1)), 0, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Cardiac Overdrive now gives Mauga a heart attack if he doesn't deal 200 damage while active.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_2)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Cardiac Overdrive Increases Mauga's move speed by 25% while active.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_2)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Disables all of Mauga's inputs, forces him to emote, and makes him invulnerable.".format(abilityIconString(Hero.MAUGA, Button.ULTIMATE)), 3, Color.SKY_BLUE]])
-    
-    
-    
