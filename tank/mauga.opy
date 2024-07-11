@@ -1,18 +1,22 @@
 #!mainFile "../main.opy"
 
+rule "Mauga Overrun Usage":
+    @Event eachPlayer
+    @Condition eventPlayer.isUsingAbility1()
+    
+    wait(0.71)
+    eventPlayer.ccimmune = true
+    waitUntil(not eventPlayer.isUsingAbility1(), 4)
+    eventPlayer.ccimmune = false
+
 rule "Mauga Overrun":
     @Event eachPlayer
-    @Hero mauga
-    @Condition eventPlayer.isUsingAbility1()
+    @Condition getPlayersOnHero(Hero.MAUGA, getOppositeTeam(eventPlayer.getTeam())).isUsingAbility1()
+    @Condition distance(eventPlayer, getPlayersOnHero(Hero.MAUGA, getOppositeTeam(eventPlayer.getTeam()))) <= 5
 
-    wait(0.21)
-    waitUntil(eventPlayer.isHoldingButton(Button.JUMP), 2)
-    wait(0.6)
-    if not eventPlayer.isUsingAbility1():
-        return
-    if ([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if player.hasSpawned() and not player.isInSpawnRoom()]) != []:
-        eventPlayer.teleport((random.choice([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if player.hasSpawned() and not player.isInSpawnRoom()])).getPosition())
-
+    eventPlayer.setStatusEffect(getPlayersOnHero(Hero.MAUGA, getOppositeTeam(eventPlayer.getTeam())), Status.BURNING, 4)
+    eventPlayer.startDoT(getPlayersOnHero(Hero.MAUGA, getOppositeTeam(eventPlayer.getTeam())), 4, 25)
+    wait(4)
 
 rule "Mauga Cardiac Overdrive":
     @Event eachPlayer
@@ -55,7 +59,7 @@ rule "Mauga Cage Fight":
     while eventPlayer.isUsingUltimate():
         if not eventPlayer.isCommunicatingEmote():
             eventPlayer.communicate(Comms.EMOTE_UP)
-        wait(0)
+        wait()
     eventPlayer.clearStatusEffect(Status.ROOTED)
 
     eventPlayer.setDamageReceived(100)
@@ -73,7 +77,8 @@ rule "Mauga Patch Notes":
     @Event eachPlayer
     @Hero mauga
 
-    eventPlayer.patchNotesData.append([["{} Overrun now teleports Mauga to a random person when he stomps.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_1)), 0, Color.YELLOW]])
+    eventPlayer.hero_description = "He's been struggling recently. He misses Baptiste."
+    eventPlayer.patchNotesData.append([["{} Overrun now sets players near Mauga on fire when used.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_1)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Cardiac Overdrive now gives Mauga a heart attack if he doesn't deal 200 damage while active.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_2)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Cardiac Overdrive Increases Mauga's move speed by 25% while active.".format(abilityIconString(Hero.MAUGA, Button.ABILITY_2)), 2, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Disables all of Mauga's inputs, forces him to emote, and makes him invulnerable.".format(abilityIconString(Hero.MAUGA, Button.ULTIMATE)), 3, Color.SKY_BLUE]])

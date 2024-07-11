@@ -1,11 +1,4 @@
 #!mainFile "../main.opy"
-playervar patchNotesData = [] # 0: text, 1: sort order, 2: color
-
-playervar patchNotesText = []
-
-playervar i
-
-
 
 def clear_text_from_screen():
     for eventPlayer.i in range(len(eventPlayer.patchNotesText)):
@@ -14,7 +7,7 @@ def clear_text_from_screen():
 
 
 def read_patch_notes_data():
-    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), null, null, HudPosition.LEFT, -100, Color.WHITE, null, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), eventPlayer.hero_description, null, HudPosition.LEFT, -100, Color.WHITE, Color.WHITE, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
         eventPlayer.patchNotesText.append(getLastCreatedText())
     for eventPlayer.i in range(0, len(eventPlayer.patchNotesData)):
         hudText(eventPlayer, 
@@ -36,7 +29,6 @@ def read_patch_notes_data():
 rule "Show menu in spawn":
     @Event eachPlayer
     @Condition eventPlayer.isInSpawnRoom()
-    @Disabled
 
     RULE_START
 
@@ -61,13 +53,3 @@ rule "Show menu in spawn":
 
     if RULE_CONDITION:
         goto RULE_START
-
-    
-
-
-
-
-
-
-
-

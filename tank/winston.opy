@@ -1,27 +1,28 @@
 #!mainFile "../main.opy"
 
+playervar jump_target
+playervar jump_target_previous
+playervar jump_count
 
-rule "Winston dies to Roadhog - Reduce Health":
-    @Event playerDied
+rule "Winston Secondary Fire":
+    @Event playerDealtDamage
     @Hero winston
-    @Condition attacker.currentHero == Hero.ROADHOG
+    @Condition eventAbility == Button.SECONDARY_FIRE
 
-    eventPlayer.healthMax -= 10
-    waitUntil(eventPlayer.isAlive(), 99999)
-    bigMessage(eventPlayer, "Tier 2 Wanna be... You'll never be good!!!!")
-    eventPlayer.setUltCharge(100)
-    wait(1)
-    eventPlayer.forceButtonPress(Button.ULTIMATE)
+    attacker.jump_target_previous = victim
+    attacker.jump_count = 1
+    while attacker.jump_count < 5:
+        attacker.jump_target = random.choice([player for player in getPlayersInRadius(attacker.jump_target_previous, 4.5, attacker.jump_target_previous.getTeam(), LosCheck.SURFACES_AND_ALL_BARRIERS) if player != attacker.jump_target_previous])
+        if attacker.jump_target:
+            createBeam(getAllPlayers(), Beam.BAD, attacker.jump_target_previous, attacker.jump_target, eventPlayer.getTeam(), EffectReeval.POSITION_RADIUS_AND_COLOR)
+            attacker.jump_count += 1
+            damage(attacker.jump_target, attacker, eventDamage/attacker.jump_count)
+            wait(0.05)
+            destroyEffect(getLastCreatedEntity())
+            attacker.jump_target_previous = attacker.jump_target
+        else:
+            break
 
-
-rule "Winston dies to Symmetra - Disable":
-    @Event playerDied
-    @Hero winston
-    @Condition attacker.currentHero == Hero.SYMMETRA
-
-    eventPlayer.setAllowedHeroes(getAllHeroes().exclude(Hero.WINSTON))
-    attacker.addHealthPool(Health.ARMOR, 100, true, false)
-    attacker.setUltCharge(100)
 
 rule "Winston Jump Pack":
     @Event eachPlayer
@@ -30,20 +31,7 @@ rule "Winston Jump Pack":
 
     waitUntil(eventPlayer.isInAir(), 1)
     waitUntil(eventPlayer.isOnGround(), 99999)
-    damage(getPlayersInRadius(eventPlayer, 3, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES_AND_ENEMY_BARRIERS), eventPlayer, 200)
-
-rule "Winston Barrier Projector":
-    @Event eachPlayer
-    @Hero winston
-    @Condition eventPlayer.isUsingAbility2()
-
-    eventPlayer.var1 = 10
-    eventPlayer.var2 = raycast(eventPlayer.getPosition(), eventPlayer.getPosition() + Vector.DOWN * 200, null, null, false).getHitPosition()
-    while eventPlayer.var1 > 0:
-        damage([player for player in getPlayersInRadius(eventPlayer.var2, 5, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES) if player.currentHero == Hero.LUCIO], eventPlayer, 10)
-
-        wait(0.5)
-        eventPlayer.var1 -= 1
+    damage(getPlayersInRadius(eventPlayer, 3, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES_AND_ENEMY_BARRIERS), eventPlayer, 100)
         
 rule "Winston Primal Rage Jump Pack":
     @Event eachPlayer
@@ -68,9 +56,10 @@ rule "Winston Patch Notes":
     @Event eachPlayer
     @Hero winston
 
+    eventPlayer.hero_description = "Guxue's dream."
+    eventPlayer.patchNotesData.append([["{} Secondary Fire now jumps between players.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Now deals massive damage to any players you directly land on.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Cooldown during Primal Rage reduced to 0 seconds.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Deals damage over time to Lucio while he is in the bubble. For you, Juuzou.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Pressing Secondary Fire tosses a small bouncy ball.".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 4, Color.SKY_BLUE]])
     
     

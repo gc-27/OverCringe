@@ -1,5 +1,7 @@
 #!mainFile "../main.opy"
 
+
+
 rule "Junker Queen Disable Scattergun + Carnage":
     @Event eachPlayer
     @Hero junkerQueen
@@ -8,19 +10,35 @@ rule "Junker Queen Disable Scattergun + Carnage":
     eventPlayer.disallowButton(Button.ABILITY_2)
     eventPlayer.setProjectileSpeed(0)
 
-rule "Junker Queen Jagged Blade":
+rule "Junker Queen Jagged Blade ":
+    @Event eachPlayer
+    @Condition eventPlayer.isFiringSecondaryFire()
+    @Hero junkerQueen
+    
+    eventPlayer.var3 = raycast(eventPlayer.getPosition(), eventPlayer.getPosition() + Vector.DOWN, null, null, false).getHitPosition()
+    waitUntil(eventPlayer.getAbilityCooldown(Button.SECONDARY_FIRE) <= 2.0 or eventPlayer.isHoldingButton(Button.SECONDARY_FIRE) and eventPlayer.canUseAbilities, 4)
+    eventPlayer.var4 = eventPlayer.getPosition()
+    chase(eventPlayer.var4, eventPlayer.var3, rate=50, ChaseReeval.DESTINATION_AND_RATE)
+    eventPlayer.setStatusEffect(null, Status.ROOTED, 99999)
+    eventPlayer.startForcingPosition(eventPlayer.var4, true)
+    waitUntil(eventPlayer.var4 == eventPlayer.var3, 99999)
+    wait()
+    eventPlayer.stopForcingPosition()
+    eventPlayer.clearStatusEffect(Status.ROOTED)
+
+
+rule "Junker Queen Jagged Blade Damage":
     @Event playerDealtDamage
     @Condition eventAbility == Button.SECONDARY_FIRE
+    @Condition eventDamage >= 40
     @Hero junkerQueen
 
-    damage(victim, attacker, eventDamage * 5)
-    attacker.applyImpulse(directionTowards(attacker, victim), 1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
+    eventPlayer.var3 = victim
     
 rule "Junker Queen Commanding Shout":
     @Event eachPlayer
     @Hero junkerQueen
     @Condition eventPlayer.isUsingAbility1()
-
 
     eventPlayer.var1 = getPlayersInRadius(eventPlayer, 10, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES_AND_ENEMY_BARRIERS)
     for eventPlayer.i in range(0, len(eventPlayer.var1)):
@@ -65,7 +83,7 @@ rule "Junker Queen Rampage Mines":
     @Hero junkerQueen
     @Condition eventPlayer.isUsingUltimate()
 
-    wait(0.74)
+    wait(0.5)
 
     for eventPlayer.i in range(0,25):
         createProjectile(Projectile.ROADHOG_SCRAP_BALL, eventPlayer, null, null, Relativity.TO_PLAYER, ModifyHealth.DAMAGE, getOppositeTeam(eventPlayer.getTeam()), 25, 1, 3, DynamicEffect.BAD_EXPLOSION, DynamicEffect.BUFF_EXPLOSION_SOUND, 0, 10, 2, 5, 10, 9.68)
@@ -76,9 +94,10 @@ rule "Junker Queen Patch Notes":
     @Event eachPlayer
     @Hero junkerQueen
     
+    eventPlayer.hero_description = "I thought it was too difficult to hit Scattergun, so I got rid of it."
     eventPlayer.patchNotesData.append([["{} removed. Do not look in the bottom right corner.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.PRIMARY_FIRE)), 0, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} Connecting Jagged Blade will now magnetize her to the victim.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Jagged Blade just drops out of Junker Queen's hand, and deals 5x damage.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Now drops out of Junker Queen's hand.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} will pull Junker Queen back to the knife when called for.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.SECONDARY_FIRE)), 2, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Commanding Shout now damages nearby enemies for 25% of their current health.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ABILITY_1)), 3, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Carnage replaces the Scattergun. MIssing now deals 200 self-damage.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ABILITY_2)), 4, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Rampage now leaves a trail of mines while casting.".format(abilityIconString(Hero.JUNKER_QUEEN, Button.ULTIMATE)), 5, Color.SKY_BLUE]])

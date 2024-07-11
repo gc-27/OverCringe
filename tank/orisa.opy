@@ -16,10 +16,12 @@ rule "Orisa Fortify":
     @Hero orisa
     @Condition eventPlayer.isUsingAbility1() == true
     
+    eventPlayer.ccimmune = true
     eventPlayer.addHealthPool(Health.NORMAL, 425, false, true)
     eventPlayer.var1 = getLastCreatedHealthPool()
     eventPlayer.setStatusEffect(null, Status.ROOTED, 5)
     waitUntil(not eventPlayer.isUsingAbility1(), 99999)
+    eventPlayer.ccimmune = false
     eventPlayer.clearStatusEffect(Status.ROOTED)
     removeHealthPool(eventPlayer.var1)
 
@@ -57,6 +59,7 @@ rule "Orisa Patch Notes":
     @Event eachPlayer
     @Hero orisa
 
+    eventPlayer.hero_description = "Orisa isn't mobile enough."
     eventPlayer.patchNotesData.append([["{} Energy Javelin throws Orisa alongside a javelin.".format(abilityIconString(Hero.ORISA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Fortify now grants 500 overhealth and makes Orisa completely immobile.".format(abilityIconString(Hero.ORISA, Button.ABILITY_1)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Javelin Spin now allows Orisa to fly, and pulls enemies towards her.".format(abilityIconString(Hero.ORISA, Button.ABILITY_2)), 2, Color.YELLOW]])

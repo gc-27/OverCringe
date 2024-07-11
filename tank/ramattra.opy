@@ -25,14 +25,13 @@ rule "Ramattra Nemesis Form":
 
 
 rule "Ramattra Ravenous Vortex":
-    @Event playerTookDamage
+    @Event playerDealtDamage
+    @Hero ramattra
     @Condition eventAbility == Button.ABILITY_2
-    @Condition attacker.getCurrentHero() == Hero.RAMATTRA
     
-    victim.gravity -= 100
-    victim.applyImpulse(Vector.UP, 25, Relativity.TO_WORLD, Impulse.CANCEL_CONTRARY_MOTION)
+    victim.startAcceleration(Vector.UP, 500, 60, Relativity.TO_PLAYER, AccelReeval.DIRECTION_RATE_AND_MAX_SPEED)
     wait(1)
-    victim.gravity += 100
+    victim.stopAcceleration()
 
 
 rule "Ramattra Annihilation":
@@ -57,6 +56,7 @@ rule "Ramattra Patch Notes":
     @Event eachPlayer
     @Hero ramattra
 
+    eventPlayer.hero_description = "Ramattra is a very situational hero. I think he should be viable in ALL of them."
     eventPlayer.patchNotesData.append([["{} Void Barrier grants a 50% speed buff while holding his hand out.".format(abilityIconString(Hero.RAMATTRA, Button.SECONDARY_FIRE)), 0, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Nemesis Form grants a 200% jump height increase while active.".format(abilityIconString(Hero.RAMATTRA, Button.ABILITY_1)), 1, Color.YELLOW]])
     eventPlayer.patchNotesData.append([["{} Ravenous Vortex sends enemies sky high.".format(abilityIconString(Hero.RAMATTRA, Button.ABILITY_2)), 2, Color.YELLOW]])

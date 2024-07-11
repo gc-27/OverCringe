@@ -11,45 +11,51 @@ rule "Zarya Particle Barrier":
     @Hero zarya
     @Condition eventPlayer.isUsingAbility1()
     
-    eventPlayer.setHealth(eventPlayer.getHealth()/2)
+    eventPlayer.moveSpeed += 25
+    waitUntil(not eventPlayer.isUsingAbility1(), 4)
+    eventPlayer.setAbility1Enabled(false)
+    eventPlayer.addHealthPool(Health.NORMAL, 50, false, false)
+    eventPlayer.moveSpeed -= 25
+    wait(2)
+    eventPlayer.setAbility1Enabled(true)
 
-rule "Zarya Graviton Surge":
+
+rule "Zarya Gravity Grenade":
     @Event eachPlayer
     @Hero zarya
     @Condition eventPlayer.isHoldingButton(Button.ULTIMATE)
     @Condition eventPlayer.getUltCharge() == 100
-    @Condition not eventPlayer.hasStatusEffect(Status.ASLEEP)
-    @Condition not eventPlayer.hasStatusEffect(Status.HACKED)
-    @Condition not eventPlayer.hasStatusEffect(Status.STUNNED)
-    @Condition not eventPlayer.hasStatusEffect(Status.KNOCKED_DOWN)
-    @Condition not eventPlayer.hasStatusEffect(Status.FROZEN)
-    @Condition eventPlayer.isAlive()
+    @Condition eventPlayer.canUseAbilities
 
     eventPlayer.setUltCharge(0)
 
-    eventPlayer.var1 = 0
-    eventPlayer.var2 = (eventPlayer.getEyePosition() + eventPlayer.getPosition()) / 2
-    createEffect(getAllPlayers(), Effect.BAD_AURA, Color.BLUE, eventPlayer.var2, eventPlayer.var1, EffectReeval.VISIBILITY_POSITION_RADIUS_AND_COLOR)
-    eventPlayer.effects[0] = getLastCreatedEntity()
-    chase(eventPlayer.var1, 100, duration=10, ChaseReeval.DESTINATION_AND_DURATION)
-    while eventPlayer.var1 < 100:
-        for eventPlayer.var3 in range (0, len(getAllPlayers())):
-            getAllPlayers()[eventPlayer.var3].applyImpulse(directionTowards(getAllPlayers()[eventPlayer.var3], eventPlayer.var2), eventPlayer.var1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
-        kill(getPlayersInRadius(eventPlayer.var2, eventPlayer.var1, Team.ALL, LosCheck.OFF), eventPlayer)
-        wait()
-    destroyEffect(eventPlayer.effects[0])
-    stopChasingVariable(eventPlayer.var1)
+    bigMessage(getPlayers(getOppositeTeam(eventPlayer.getTeam())), "Have fun up there!")
+    bigMessage(getPlayers(eventPlayer.getTeam()), "Fire at... Will? Who's Will?")
+    createProjectile(Projectile.ZARYA_GRAVITON, eventPlayer, eventPlayer.getEyePosition(), eventPlayer.getFacingDirection(), Relativity.TO_WORLD, ModifyHealth.DAMAGE, getOppositeTeam(eventPlayer.getTeam()), 100, 0, 12, DynamicEffect.BAD_EXPLOSION, DynamicEffect.EXPLOSION_SOUND, 0, 40, 100, 10, 0, 9.68)
+
+rule "Zarya Gravity Grenade Hit":
+    @Event playerDealtDamage
+    @Hero zarya
+    @Condition eventAbility == null
+
+    if victim.ccimmune:
+    victim.gravity -= 100
+    victim.setStatusEffect(attacker, Status.ROOTED, 4)
+    wait(4)
+    victim.gravity += 100
 
 rule "Zarya Patch Notes":
     @Event eachPlayer
     @Hero zarya
 
-    eventPlayer.patchNotesData.append([["Health doubled", 0, Color.WHITE]])
-    eventPlayer.patchNotesData.append([["{} No longer has ammo requirement, secondary fire knockback doubled.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Cooldown reduced to 5s, damages Zarya for 50% of current health every use.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Cooldown reduced to 4 seconds.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_2)), 3, Color.YELLOW]])
-    eventPlayer.patchNotesData.append([["{} Instantly kills Zarya, creating a black hole that slowly engulfs the map and".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
-    eventPlayer.patchNotesData.append([["{} kills all players that touch it. Disappears after Zarya respawns.".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE)), 5, Color.SKY_BLUE]])
-    
+    eventPlayer.hero_description = "Fire at... Will? Who's Will?"
+    eventPlayer.patchNotesData.append([["{} Secondary fire knockback doubled.".format(abilityIconString(eventPlayer.currentHero, Button.PRIMARY_FIRE)), 1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Grants a 50 hp Overhealth pool after decaying.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Grants a 25% speed boost while active.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2.1, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Disabled for 2 seconds after use.".format(abilityIconString(eventPlayer.currentHero, Button.ABILITY_1)), 2.2, Color.YELLOW]])
+    eventPlayer.patchNotesData.append([["{} Replaced with new Ultimate : {} 'Gravity Grenade'".format(abilityIconString(eventPlayer.currentHero, Button.ULTIMATE), iconString(Icon.SPIRAL)), 4, Color.SKY_BLUE]])
+    eventPlayer.patchNotesData.append([["{} Zarya shoots out a gravity charge that explodes on contact.".format(iconString(Icon.SPIRAL)), 5, Color.SKY_BLUE]])
+    eventPlayer.patchNotesData.append([["{} Enemies that are hit with the blast are unable to move and become weightless for four seconds.".format(iconString(Icon.SPIRAL)), 6, Color.SKY_BLUE]])
+    eventPlayer.patchNotesData.append([["{} Effect does not affect players that are Unstoppable.".format(iconString(Icon.SPIRAL)), 7, Color.RED]])
     
     

@@ -1,8 +1,8 @@
 #!mainFile "../main.opy"
 settings {
     "main": {
-        "description": "OverCringe 2.0",
-        "modeName": '"Tournament Ready"'
+        "modeName": "OverCringe 2.0",
+        "description": "\"Tournament Ready\""
     },
     "gamemodes": {
         "assault": {},
@@ -21,15 +21,14 @@ settings {
         "allTeams": {
             "hammond": {
                 "ultKb%": 400,
-                "enableInfiniteAmmo": true,
-                "enablePrimaryFire": false
+                "enableInfiniteAmmo": true
             },
             "zarya": {
-                "health%": 200,
+                "secondaryFireKb%": 200
+            },
+            "doomfist": {
                 "enableInfiniteAmmo": true,
-                "ability1Cooldown%": 50,
-                "secondaryFireKb%": 200,
-                "ability2Cooldown%": 50
+                "secondaryFireKb%": 300
             }
         }
     }
