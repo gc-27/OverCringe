@@ -1,7 +1,16 @@
 #!mainFile "../main.opy"
 
+rule "Mauga Init":
+    @Event eachPlayer
+    @Hero mauga
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 400
+    eventPlayer.armor = 200
+
 rule "Mauga Overrun Usage":
     @Event eachPlayer
+    @Hero mauga
     @Condition eventPlayer.isUsingAbility1()
     
     wait(0.71)

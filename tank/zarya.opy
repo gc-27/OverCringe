@@ -5,6 +5,9 @@ rule "Zarya Init":
     @Hero zarya
 
     eventPlayer.disallowButton(Button.ULTIMATE)
+    eventPlayer.health_different = true
+    eventPlayer.health = 250
+    eventPlayer.shields = 250
 
 rule "Zarya Particle Barrier":
     @Event eachPlayer
@@ -32,13 +35,17 @@ rule "Zarya Gravity Grenade":
     bigMessage(getPlayers(getOppositeTeam(eventPlayer.getTeam())), "Have fun up there!")
     bigMessage(getPlayers(eventPlayer.getTeam()), "Fire at... Will? Who's Will?")
     createProjectile(Projectile.ZARYA_GRAVITON, eventPlayer, eventPlayer.getEyePosition(), eventPlayer.getFacingDirection(), Relativity.TO_WORLD, ModifyHealth.DAMAGE, getOppositeTeam(eventPlayer.getTeam()), 100, 0, 12, DynamicEffect.BAD_EXPLOSION, DynamicEffect.EXPLOSION_SOUND, 0, 40, 100, 10, 0, 9.68)
+    eventPlayer.setUltEnabled(false)
+    wait(2)
+    eventPlayer.setUltEnabled(true)
 
 rule "Zarya Gravity Grenade Hit":
-    @Event playerDealtDamage
-    @Hero zarya
+    @Event playerTookDamage
+    @Condition attacker.currentHero == Hero.ZARYA
     @Condition eventAbility == null
 
     if victim.ccimmune:
+        return
     victim.gravity -= 100
     victim.setStatusEffect(attacker, Status.ROOTED, 4)
     wait(4)

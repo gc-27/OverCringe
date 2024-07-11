@@ -7,8 +7,16 @@ def clear_text_from_screen():
 
 
 def read_patch_notes_data():
-    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), eventPlayer.hero_description, null, HudPosition.LEFT, -100, Color.WHITE, Color.WHITE, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), null, null, HudPosition.LEFT, -100, Color.WHITE, null, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    eventPlayer.patchNotesText.append(getLastCreatedText())
+    if eventPlayer.hero_description:
+        hudText(eventPlayer, null, null, '"{}"'.format(eventPlayer.hero_description), HudPosition.LEFT, -100, null, null, Color.ROSE, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
         eventPlayer.patchNotesText.append(getLastCreatedText())
+    if eventPlayer.health_different:
+        hudText(eventPlayer, null, "─────────────", null, HudPosition.LEFT, -100, null, Color.GRAY, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+    hudText(eventPlayer, null, "Health changed to {} health{}{}".format(eventPlayer.health, ", {} armor".format(eventPlayer.armor) if eventPlayer.armor else "", ", {} shields".format(eventPlayer.shields) if eventPlayer.shields else ""), null, HudPosition.LEFT, -100, Color.WHITE, Color.WHITE, Color.ROSE, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    eventPlayer.patchNotesText.append(getLastCreatedText())
     for eventPlayer.i in range(0, len(eventPlayer.patchNotesData)):
         hudText(eventPlayer, 
                 null, 

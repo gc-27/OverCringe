@@ -1,5 +1,13 @@
 #!mainFile "../main.opy"
 
+rule "D.Va init":
+    @Event eachPlayer
+    @Hero dva
+    
+    eventPlayer.health_different = true
+    eventPlayer.health = 175
+    eventPlayer.armor = 425
+
 
 rule "D.Va matrix infinity":
     @Event eachPlayer

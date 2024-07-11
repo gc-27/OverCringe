@@ -76,6 +76,6 @@ rule "Hero Changed - Reset":
     wait(0.1)
     if eventPlayer.health_different:
         check_and_set_hp()
-    eventPlayer.addHealthPool(Health.SHIELDS, 100, true, false)
+    #eventPlayer.addHealthPool(Health.SHIELDS, 100, true, false)
 
     

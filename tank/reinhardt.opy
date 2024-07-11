@@ -3,8 +3,10 @@
 rule "Reinhardt Init":
     @Event eachPlayer
     @Hero reinhardt
-    
-    eventPlayer.moveSpeed += 50
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 300
+    eventPlayer.armor = 250
 
 rule "Reinhardt Charge":
     @Event eachPlayer

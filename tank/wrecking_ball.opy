@@ -1,5 +1,16 @@
 #!mainFile "../main.opy"
 
+rule "Wrecking Ball Init":
+    @Event eachPlayer
+    @Hero hammond
+    
+    eventPlayer.health_different = true
+    eventPlayer.health = 100
+    eventPlayer.armor = 400
+    eventPlayer.shields = 100
+    wait(0.5)
+    eventPlayer.forceButtonPress(Button.ABILITY_1)
+
 rule "Wrecking Ball Roll":
     @Event eachPlayer
     @Hero hammond

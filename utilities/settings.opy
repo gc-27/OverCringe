@@ -23,6 +23,9 @@ settings {
                 "ultKb%": 400,
                 "enableInfiniteAmmo": true
             },
+            "reinhardt": {
+                "movementSpeed%": 150
+            },
             "zarya": {
                 "secondaryFireKb%": 200
             },

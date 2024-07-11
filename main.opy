@@ -2,3 +2,5 @@
 #!include "tank/"
 #!include "damage/"
 #!include "support/"
+
+#!optimizeForSize

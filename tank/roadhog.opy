@@ -7,6 +7,9 @@ rule "Roadhog init":
     @Hero roadhog
 
     eventPlayer.disallowButton(Button.ABILITY_2)
+    eventPlayer.health_different = true
+    eventPlayer.health = 450
+    eventPlayer.armor = 150
 
 
 rule "Roadhog Stank":

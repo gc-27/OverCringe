@@ -1,5 +1,13 @@
 #!mainFile "../main.opy"
 
+rule "Doomfist Init":
+    @Event eachPlayer
+    @Hero doomfist
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 350
+    eventPlayer.armor = 200
+
 
 rule "Doomfist Rocket Punch":
     @Event eachPlayer

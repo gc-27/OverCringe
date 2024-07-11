@@ -1,6 +1,12 @@
 #!mainFile "../main.opy"
 
+rule "Orisa Init":
+    @Event eachPlayer
+    @Hero orisa
 
+    eventPlayer.health_different = true
+    eventPlayer.health = 200
+    eventPlayer.armor = 300
 
 rule "Orisa Energy Javelin":
     @Event eachPlayer

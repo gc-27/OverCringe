@@ -5,17 +5,6 @@ I wanted to rewrite OverCringe slightly, and make it viable for a possible tourn
 Balance is mildly considered for this, and will be paid attention to.
 
 
-
-
-
-[update {
-  hero:  All Heroes,
-  description: ,
-  abilities: {
-    General Updates: ["Every hero now has 100 renewable shield pool".]
-  }
-}]
-
 # Tank Heroes
 -----
 [update {
@@ -39,14 +28,14 @@ Balance is mildly considered for this, and will be paid attention to.
   hero: "Doomfist",
   description: "After years of powerblocking, he finally broke the gauntlet.",
   abilities: {
-		"Hand Cannon": ["No longer has an ammo requirement."]
+		"Hand Cannon": ["No longer has an ammo requirement."],
 		"Rocket Punch": [
 		"Moves incredibly slowly.",
 		"Deals 200% extra knockback.",
-		"Doomfist gets very tired after using it, so you will still be slowed for a short period of time after using it."
+		"Has a small delay before you can move after using it."
 		],
     "Seismic Slam": [
-      "Now has 500% gravity and 250% speed.",
+      "Now has 500% gravity and 250% speed."
     ],
     "Power Block": [
       "Knocks an enemy in front of Doomfist down for 1 second."
@@ -233,25 +222,21 @@ Balance is mildly considered for this, and will be paid attention to.
 
 [update {
   hero: "Zarya",
-  description: "How in the world does she contain the power of a black hole without dying? I don't think so, pal.",
+  description: "Fire at... Will? Who's Will?",
   abilities: {
-		"General": [
-			"Health doubled."
-		],
     "Particle Cannon": [
-      "No longer requires ammo.",
 			"Secondary fire knockback increased by 100%."
     ],
     "Particle Barrier": [
-      "Cooldown reduced to 5 seconds.",
-			"Damages Zarya by 50% of her current health every time it is used."
+			"Grants Zarya a 50 overhealth pool after decaying.",
+			"Grants Zarya a 25% move speed bonus while active.",
+			"Disabled for 2 seconds after use."
     ],
-		"Projected Barrier": [ 
-			"Cooldown reduced to 4 seconds."
-		],
-		"Graviton Surge": [ 
-		"Now instantly kills Zarya, and slowly grows until it engulfs a large area of the map, then swiftly disappears. Kills all players who touch it."
-		],
+		"Graviton Surge": ["Replaced with new Ultimate: 'Gravity Grenade'"],
+		"Gravity Grenade": [
+		"Zarya shoots out a gravity charge that explodes on contact with map geometry or enemies.",
+		"When it hits an enemy, it will disable their movement abilities and make them weightless for 4 seconds."
+		]
   }
 }]
 
@@ -263,6 +248,14 @@ Balance is mildly considered for this, and will be paid attention to.
 
 -----
 
+
+[update {
+  hero: "Ashe",
+  description: "Ashe got a small upgrade.",
+  abilities: {
+ 
+  }
+}]
 
 # [hero Ashe]**Ashe**
 * Coach Gun knockback inverted.

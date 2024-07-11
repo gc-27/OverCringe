@@ -1,5 +1,13 @@
 #!mainFile "../main.opy"
 
+rule "Sigma Init":
+    @Event eachPlayer
+    @Hero sigma
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 300
+    eventPlayer.shields = 250
+
 rule "Sigma movement":
     @Event eachPlayer
     @Hero sigma

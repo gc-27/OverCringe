@@ -4,6 +4,14 @@ playervar jump_target
 playervar jump_target_previous
 playervar jump_count
 
+rule "Winston Init":
+    @Event eachPlayer
+    @Hero winston
+    
+    eventPlayer.health_different = true
+    eventPlayer.health = 350
+    eventPlayer.armor = 150
+
 rule "Winston Secondary Fire":
     @Event playerDealtDamage
     @Hero winston

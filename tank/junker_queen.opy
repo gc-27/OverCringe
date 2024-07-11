@@ -1,5 +1,12 @@
 #!mainFile "../main.opy"
 
+rule "Junker Queen Init":
+    @Event eachPlayer
+    @Hero junkerQueen
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 400
+    eventPlayer.armor = 100
 
 
 rule "Junker Queen Disable Scattergun + Carnage":
@@ -22,7 +29,7 @@ rule "Junker Queen Jagged Blade ":
     eventPlayer.setStatusEffect(null, Status.ROOTED, 99999)
     eventPlayer.startForcingPosition(eventPlayer.var4, true)
     waitUntil(eventPlayer.var4 == eventPlayer.var3, 99999)
-    wait()
+    wait(0.1)
     eventPlayer.stopForcingPosition()
     eventPlayer.clearStatusEffect(Status.ROOTED)
 

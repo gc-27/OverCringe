@@ -1,5 +1,12 @@
 #!mainFile "../main.opy"
 
+rule "Ramattra Init":
+    @Event eachPlayer
+    @Hero ramattra
+
+    eventPlayer.health_different = true
+    eventPlayer.health = 200
+    eventPlayer.armor = 250
 
 rule "Ramattra Void Barrier":
     @Event eachPlayer
