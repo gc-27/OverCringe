@@ -55,31 +55,24 @@ rule "Mauga Cage Fight":
     @Hero mauga
     @Condition eventPlayer.isUsingUltimate()
 
-    eventPlayer.setDamageReceived(0)
-    eventPlayer.setKnockbackReceived(0)
-    eventPlayer.setMaxHealth(1000)
-    wait()
-    eventPlayer.setHealth(1000000)
+    eventPlayer.setStatusEffect(null, Status.PHASED_OUT, 8)
 
     disable_abilities()
     disable_inputs()
 
     eventPlayer.setStatusEffect(null, Status.ROOTED, 8)
     while eventPlayer.isUsingUltimate():
-        if not eventPlayer.isCommunicatingEmote():
-            eventPlayer.communicate(Comms.EMOTE_UP)
+        if eventPlayer.isOnGround():
+            if not eventPlayer.isCommunicatingEmote():
+                eventPlayer.communicate(Comms.EMOTE_UP)
         wait()
-    eventPlayer.clearStatusEffect(Status.ROOTED)
+    eventPlayer.clearStatusEffect(Status.PHASED_OUT)
 
-    eventPlayer.setDamageReceived(100)
-    eventPlayer.setKnockbackReceived(100)
-    eventPlayer.setMaxHealth(100)
 
     enable_abilities()
     enable_inputs()
 
-    eventPlayer.forceButtonPress(Button.JUMP)
-
+    eventPlayer.cancelPrimaryAction()
 
 
 rule "Mauga Patch Notes":

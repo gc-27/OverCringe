@@ -8,8 +8,7 @@ rule "Wrecking Ball Init":
     eventPlayer.health = 100
     eventPlayer.armor = 400
     eventPlayer.shields = 100
-    wait(0.5)
-    eventPlayer.forceButtonPress(Button.ABILITY_1)
+
 
 rule "Wrecking Ball Roll":
     @Event eachPlayer
@@ -17,13 +16,12 @@ rule "Wrecking Ball Roll":
     @Condition eventPlayer.isInAlternateForm() == false
     
     eventPlayer.setDamageDealt(125)
-    eventPlayer.addHealthPool(Health.ARMOR, 300, true, true)
-    eventPlayer.var1 = getLastCreatedHealthPool()
+    eventPlayer.setDamageReceived(75)
     eventPlayer.moveSpeed -= 50
     waitUntil(eventPlayer.isInAlternateForm(), 99999)
     eventPlayer.moveSpeed += 50
-    removeHealthPool(eventPlayer.var1)
     eventPlayer.setDamageDealt(100)
+    eventPlayer.setDamageReceived(75)
 
 
 rule "Wrecking Ball Adaptive Shields":
@@ -31,10 +29,9 @@ rule "Wrecking Ball Adaptive Shields":
     @Hero hammond
     @Condition eventPlayer.isUsingAbility2() == true
     
-    getPlayersInRadius(eventPlayer, 10, eventPlayer.getTeam(), LosCheck.SURFACES).addHealthPool(Health.NORMAL, 50, false, false)
-    eventPlayer.var2 = getLastCreatedHealthPool()
-    wait(8)
-    removeHealthPool(eventPlayer.var2)
+    eventPlayer.setJumpVerticalSpeed(175)
+    waitUntil(not eventPlayer.isUsingAbility2(), 8)
+    eventPlayer.setJumpVerticalSpeed(100)
 
 
 rule "Wrecking Ball Piledriver":

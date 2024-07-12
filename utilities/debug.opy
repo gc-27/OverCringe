@@ -30,7 +30,6 @@ rule "Ultimate charge if debug mode":
     @Event eachPlayer
     @Condition debug
     @Condition eventPlayer.getUltCharge() != 100
-    @Disabled
 
     waitUntil(eventPlayer.hasSpawned(), 1000)
     eventPlayer.setUltCharge(100)

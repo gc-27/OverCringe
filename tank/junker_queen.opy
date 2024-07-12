@@ -70,11 +70,11 @@ rule "Junker Queen Carnage Damage":
     
     eventPlayer.var2 = false
 
-
-rule "Junker Queen Carnage Primary Fire":
+rule "Junker Queen Carnage":
     @Event eachPlayer
     @Hero junkerQueen
     @Condition eventPlayer.isHoldingButton(Button.PRIMARY_FIRE) == true
+    @Condition eventPlayer.canUseAbilities
     
     eventPlayer.allowButton(Button.ABILITY_2)
     eventPlayer.forceButtonPress(Button.ABILITY_2)
@@ -102,3 +102,7 @@ rule "Junker Queen Patch Notes":
     @Hero junkerQueen
     
     eventPlayer.hero_description = "I thought it was too difficult to hit Scattergun, so I got rid of it."
+    eventPlayer.patchNotes[0] = ["Removed, and replaced with Carnage. Do not look in the bottom right corner."]
+    eventPlayer.patchNotes[1] = ["Drops out of Junker Queen's hand on use instead of being thrown.", "When pulled, Junker Queen will move towards the knife.", "Junker Queen will phase through walls to get to the knife."]
+    eventPlayer.patchNotes[2] = ["Now damages nearby enemies for 25% of their current health."]
+    eventPlayer.patchNotes[3] = ["Missing Carnage will now deal 200 damage to Junker Queen."]

@@ -23,7 +23,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
-
+-----
 
 [update {
   hero: "Doomfist",
@@ -37,7 +37,7 @@ Balance is mildly considered for this, and will be paid attention to.
 			"Has a small delay before you can move after punching."
 		],
     "Seismic Slam": [
-      "Now has 500% gravity and 250% speed."
+      "Now moves 150% faster."
     ],
     "Power Block": [
       "Knocks an enemy in front of Doomfist down for 1 second."
@@ -49,7 +49,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
-
+-----
 
 [update {
   hero: "Junker Queen",
@@ -76,6 +76,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
+-----
 
 [update {
   hero: "Mauga",
@@ -92,12 +93,12 @@ Balance is mildly considered for this, and will be paid attention to.
 		"Cage Fight": [
 			"Disables all of Mauga's inputs.",
 			"Forces Mauga to emote while active.",
-			"Makes Mauga invulnerable.",
-			"Increases the shield's hp to 15,000."
+			"Makes Mauga invulnerable."
 		]
   }
 }]
 
+-----
 
 [update {
   hero:  Orisa,
@@ -119,7 +120,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
-
+-----
 
 [update {
   hero:  Ramattra,
@@ -151,6 +152,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
+-----
 
 [update {
   hero: Roadhog,
@@ -165,6 +167,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
+-----
 
 [update {
   hero: "Sigma",
@@ -181,9 +184,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
-
 -----
-
 
 [update {
   hero: "Winston",
@@ -201,9 +202,7 @@ Balance is mildly considered for this, and will be paid attention to.
   }
 }]
 
-
 -----
-
 
 [update {
   hero: "Wrecking Ball",
@@ -213,18 +212,15 @@ Balance is mildly considered for this, and will be paid attention to.
 		"Quad Cannons": [ "No longer has ammo requirement.", "Damage increased by 25%."],
     "Roll": [
       "Move speed outside of ball form reduced to 50%.",
-			"Being outside of ball form grants a 300 hp armor pool."
+			"Being outside of ball form grants a 25% damage reduction."
     ],
     "Adaptive Shield": [
-      "Now provides 50 Overhealth to nearby teammates."
+      "Jump Height while in use increased by 75%."
     ],
 		"Piledriver": ["Now knocks opponents he hits down for 1 second."],
 		"Minefield": [ "Knockback increased by 300%."] 
   }
 }]
-
-
-
 
 -----
 
@@ -253,8 +249,6 @@ Balance is mildly considered for this, and will be paid attention to.
 
 -----
 # Damage Heroes
-
-
 -----
 
 
@@ -265,304 +259,4 @@ Balance is mildly considered for this, and will be paid attention to.
  
   }
 }]
-
-# [hero Ashe]**Ashe**
-* Coach Gun knockback inverted.
-* Coach Gun knockback heavily increased.
-* Getting a kill with Dynamite now provides Ashe with 50 overhealth.
-* Ashe only has 1 bullet but now deals 300 damage per head-shot.
-* Ashe can no longer spam-fire.
-* B.O.B lasts a very long time.
-
-> Ashe upgraded to 50 BMG.
-> B.O.B can leave whenever he wants.
-
------
-
-# [hero Bastion]**Bastion**
-* Bastion gains a 200 armor health pool while in Assault Form.
-* A-36 Tactical Grenade knockback increased by 200%.
-* Move Speed during Assault Form increased by 100%.
-* Bastion can no longer jump during Assault Form.
-* Sentry Form no longer requires ammo.
-
-> I really like F1.
-
-
------
-
-# [hero Cassidy]**Cassidy**
-* Roll has a 2 second cooldown.
-* Cassidy can no longer shoot Fan the Hammer.
-* Magnetic Grenade applies every debuff in the game because it’s a dumb ability anyway.
-* Moves incredibly fast during Deadeye.
-
-> This hero is stupid. I made him stupider.
-
------
-
-# [hero Echo]**Echo**
-* Removed from the game.
-
-> You seriously think I'm gonna make the 130+ scripts work for Echo while she's duping? Lol no.
-> Also Echo is stupid.
-
------
-
-# [hero Genji]**Genji**
-* Dash now stuns anyone it hits. 
-* Reflect now heals Genji for any damage dealt.
-* Dragonblade is now a foam sword and deals a pathetic amount of damage.
-* Dragonblade now lasts 15 seconds.
-* Dash cooldown during Dragonblade reduced to 1 second.
-* Communicating “Need Healing” will grant Genji 25 hp.
-
-> This makes Genji much more self-reliant while annoying the hell out of his supports, just as God intended.
-
------
-
-# [hero Hanzo]**Hanzo**
-* Storm Arrow count increased to 12.
-* Lunge no longer has a cooldown.
-* Lunge distance increased by 100%.
-* Lunge now deals 10 damage per use.
-* Projectile speed increased by 400%.
-* Projectiles no longer have gravity.
-
-> Dude's practically a hitscan so I finished the job.
-
------
-
-# [hero Junkrat]**Junkrat**
-* Frag Launcher projectile speed and gravity are completely random. What did you think was gonna happen? It’s a gun made of garbage. Of course it’s not going to work well.
-* Concussive Mine knockback now sets Junkrat on fire when he detonates the mine.
-* Steel Trap now roots Junkrat on activation.
-* RIP-Tire now moves incredibly fast.
-
-> Chaos.
-
------
-
-# [hero Mei]**Mei**
-* Mei is now slowed after leaving Cryo-Freeze for one second.
-* Cryo-Freeze now freezes nearby enemies for 1 second.
-* Freezing a player with Blizzard will provide Mei with 50 overhealth.
-* Mei can now heal teammates with her primary fire.
-
-> Seriously, how does a hero that has a cryonic based kit have the inability to freeze teammate's wounds to prevent them from bleeding?
-
------
-
-# [hero Pharah]**Pharah**
-* Pharah now takes fall damage, but landing on top of somebody will make them take heavy damage instead.
-* Jump Jet now knocks enemies away from Pharah.
-* Jump Jet cooldown reduced to 6 seconds. 
-* Fuel capacity decreased by 25%.
-* Move speed in the air increased by 50%.
-* Pharah can now move while using Barrage.
-* Pharah has become ethereal while using Barrage and can pass through walls. Once she is done, she will be returned to the earth.
-
-> Pharah may be playing too much TF2.
-
------
-
-# [hero Reaper]**Reaper**
-* Death Blossom sends Reaper into the sky during use.
-* Reaper no longer has gravity while using Wraith Form.
-* Reaper feels bad about being so harmful to the environment with his shotguns, so he now has infinite ammo.
-* Teleporting with Shadow Step will now telefrag a nearby enemy.
-
-> Reaper is an enviromentalist.
-
------
-
-# [hero Sojourn]**Sojourn**
-* Slide now knocks down any players Sojourn runs into.
-* Disruptor shot will disrupt Sojourn.
-* If Sojourn gets killed during Overclock, she won’t be able to use Overclock again until she kills 5 people with headshots from Railgun.
-* Using Overclock slows down the world.
-* Overclock is MLG.
-
-> Pro Sojourn players will like this one.
-
------
-
-# [hero Soldier76]**Soldier: 76**
-* Biotic Field now damages players inside of it, instead of healing.
-* Tactical Visor causes Soldier 76 to spin violently.
-* Move speed granted by sprint slowly decreases as it is used, up until Soldier stops moving.
-* Helix Rockets now backfires and sends Soldier: 76 backward.
-
-> He's old. Nothing works.
-
------
-
-# [hero Sombra]**Sombra**
-* Sombra makes constant fan noise because her processor is overheating.
-* No longer announces to players when she's in stealth, instead, she has an outline at all times. It's black.
-* Virus now slows the aim of players hit by it.
-* Translocator hacks people that she teleports near.
-* EMP will now change every player’s hero to a random hero in the role they were playing.
-* Healing with Hack will now provide the healee a 25 hp Overhealth pool.
-
-> Sombra may have gone too far with the hacking.
-
------
-
-# [hero Symmetra]**T3 Loser**
-* If T3 Loser kills T1 gamer, T3 Loser gains 100 armor and instantly charges ultimate.
-* If T3 Loser kills T2 Wanna-be, T3 Loser gains 50 armor and half charges ultimate.
-* Earning eliminations with Turrets will temporarily increase T3 Loser’s movespeed by 5%. Stacks up to 25%.
-* Earning eliminations with Turrets will grant T3 Loser 25 Overhealth.
-* Photon Barrier will now grant all teammates 100 shield health upon use.
-
-> If you beat a T1 player as a T3, it feels good. So I incorporated that into the gameplay loop.
-
- -----
-
-# [hero Torbjorn]**Torbjorn**
-* No Rivet Gun.
-* No Turret.
-* Forge Hammer damage increased by 100.
-* Overload now grants 100 armor upon use along with the Overhealth.
-* Move speed during Overload increased by 50%.
-* Molten Core insta-kills Brigitte.
-
-> This is truly all you need to play Torbjorn.
-
- -----
-
-# [hero Tracer]**Tracer**
-* Unlimited blinks
-* Each time Tracer blinks she takes 5 damage
-* Recall now un-damages people Tracer has damaged.
-* Recall will revive people Tracer has killed.
-
-> Finally the question is answered: "Do Tracer's bullets rewind with her?" Yes. They do.
-
-  -----
-
-# [hero Widowmaker]**Widowmaker**
-* Widowmaker can only damage players in the air.
-* Detonating Venom-Mine will now put the victim to sleep.
-* Infra-Sight now grants Widowmaker the ability to damage players on the ground.
-* Grapple will damage Widowmaker due to the inertia.
-
-> I made Widowmaker balanced, cause she won't be able to kill anyone except Pharah.
-
-
------
-
-# Support Heroes
-
-
------
-
-# [hero Ana]**Ana**
-* Whenever Ana gets damaged, a random debuff will be applied to her due to her old age.
-* Ana moves 25% slower because she is old.
-* Nano-Boost provides a speed boost to the target, one that is nearly uncontrollable.
-* Ana gives herself a mini-Nano-Boost when it is activated, increasing her move speed and healing dealt.
-* Sleep Dart will also put Ana to sleep.
-
-> Old.
-
-
------
-# [hero Baptiste]**Baptiste**
-* Exo-Boots sends Baptiste sky-high.
-* Baptiste’s gun shoots very inconsistently.
-* Regenerative Burst damages enemies nearby for 50 health.
-* Immortality Field sets teammates on fire.
-* Amplification Matrix gives Baptiste aimbot.
-* Baptiste’s eyepiece allows him to detect invisible players.
-
-> He has a very good gaming chair.
-
-
------
-# [hero Brigitte]**Brigitte**
-* Brigitte moves 25% faster.
-* Shield Bash stuns people again.
-* Whip Shot sends Brigitte forward.
-* Repair Pack grants heal targets 50 overhealth.
-* Rally granted armor increased to 200.
-* Shield Bash move distance increased by 50%.
-* Inspire also reduces damage taken by 20%.
-
-> My Brig main friend told me to do this. Don't blame me.
-
------
-# [hero Kiriko]**Kiriko**
-* Suzu knockback increased by 100%.
-* Kunai critical damage multiplier increased to 4x.
-* Swift Step teleport distance increased by 200%.
-* Healing Ofuda Max Ammo increased to 50.
-* Kunai ammo increased to 75.
-
-> If you want to be dealing damage as a support, you should go Moira. Kiriko is not a good damage dealer for ranked. Go Moira.
-
------
-# [hero Lifeweaver]**Lifeweaver**
-* Tree of Life health increased by 200%.
-* Life Grip and Healing Blossom range increased by 100%.
-* Earning an elimination will grant you 25% ult charge because by all means, that should be impossible.
-* Rejuvenating dash cooldown reduced to 1 second.
-* Dash will now knock down the first person Lifeweaver runs through.
-* Lifeweaver now provides a speed buff to all nearby teammates when he casts Tree of Life.
-
-> I swear he's good now. I promise.
-
------
-
-# [hero Illari] **Illari**
-* Scale decreased by 25%.
-* Move speed increased by 25%.
-* Solar Energy capacity increased by 400%.
-* Solar Energy now regenerates 400% quicker.
-* Melee now applies a 25 damage per second bleed to opponents.
-* Captive Sun movement speed increased by 250%.
-> Personally I think Illari is very weak. She should never have downtime.
-
-# [hero Lucio]**Lucio**
-* Using Soundwave will knock Lucio in the opposite direction he is facing.
-* Sound Barrier will knock everyone on the map away.
-* Sound Barrier will increase Lucio and his team’s move speed by 100%.
-* Amp it up will make Lucio’s aura deal damage to enemies.
-
-> Amp it up physically increases the volume of the music. It only makes sense that he would damage the enemy's hearing on purpose.
-
------
-# [hero Mercy]**Mercy**
-* Move Speed during Valkyrie increased to 200%.
-* Healing beam now damages teammates.
-* Valkyrie now damages nearby enemies.
-* Meleeing enemies during Valkyrie will knock them down.
-* Valkyrie now instantly resurrects all dead teammates.
-
-> Violence.
-
------
-# [hero Moira]**Moira**
-* Biotic Orb projectile speed reduced to 0%.
-* Coalescence now knocks enemies away. 
-* Fade will make allies fade as well.
-* Killing an enemy will reset all of Moira’s cooldowns and refill her resource meter.
-
-> You went Moira. Good job. Now deal damage.
-
- -----
-# [hero Zenyatta]**Zenyatta**
-* Transcendence knocks enemies away violently.
-* Snap Kick will heal Zenyatta for 25 hp.
-* Zenyatta’s Gravity is reduced by 50%.
-* Zenyatta instantly dies if hacked.
-* Healing increased by 75%.
-
-> Zenyatta doesn't have enough risk-to-reward so if you get hacked you die instantly. But I REALLY increased the reward in return.
-
-
-
-
-
 

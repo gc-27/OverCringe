@@ -31,6 +31,16 @@ rule "D.Va Self Destruct":
 
     getPlayers(eventPlayer.getTeam()).addHealthPool(Health.NORMAL, 50, false, false)
 
+rule "D.Va demech":
+    @Event eachPlayer
+    @Hero dva
+    @Condition eventPlayer.isInAlternateForm()
+
+    smallMessage(eventPlayer, 'test')
+    eventPlayer.removeAllHealthPools()
+    waitUntil(not eventPlayer.isInAlternateForm(), 99999)
+    set_player_health()
+
 rule "D.Va patch notes":
     @Event eachPlayer
     @Hero dva
