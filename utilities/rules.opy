@@ -40,15 +40,27 @@ rule "Update Gravity":
         wait(0.25)
     while RULE_CONDITION
 
-rule "Hero Changed - Reset":
+rule "Hero Changed - Reset player vars and HP":
     @Event eachPlayer
     @Condition eventPlayer.currentHero != eventPlayer.getCurrentHero()
 
+    eventPlayer.currentHero = eventPlayer.getCurrentHero()
+
+    eventPlayer.patchNotes = [["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"], "not set"] 
+    eventPlayer.hero_description = "This hero does not have a description!"
+    eventPlayer.hero_general_changes = []
+
+
+    eventPlayer.moveSpeed = 100
+    eventPlayer.gravity = 100
+    eventPlayer.health_different = false
+    eventPlayer.health = 0
+    eventPlayer.armor = 0
+    eventPlayer.shields = 0
+    
     enable_inputs()
     enable_abilities()
     clear_status_effects()
-
-    eventPlayer.setMaxHealth(100)
 
     eventPlayer.enablePlayerCollision()
     eventPlayer.enableEnvironmentCollision()
@@ -56,15 +68,13 @@ rule "Hero Changed - Reset":
     eventPlayer.setProjectileSpeed(100)
     eventPlayer.setJumpVerticalSpeed(100)
 
-    eventPlayer.currentHero = eventPlayer.getCurrentHero()
-    eventPlayer.patchNotes = [[], [], [], [], [], [], [], []] 
-    eventPlayer.moveSpeed = 100
-    eventPlayer.gravity = 100
-    eventPlayer.health_different = false
     clear_player_health()
-    wait(0.1)
+    wait() #Wait one tick for player to set up
     if eventPlayer.health_different:
         check_and_set_hp()
-    #eventPlayer.addHealthPool(Health.SHIELDS, 100, true, false)
+        eventPlayer.hero_general_changes[0] = "Health pool changed to {} Health{}{}".format(eventPlayer.health, ", {} Armor".format(eventPlayer.armor) if eventPlayer.armor else "", ", {} Shields".format(eventPlayer.shields) if eventPlayer.shields else "")
+    
+    clear_text_from_screen()
+    read_patch_notes_data()
 
     

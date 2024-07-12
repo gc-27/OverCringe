@@ -6,8 +6,16 @@ rule "Spawn Dummy Bots":
     @Condition hostPlayer.isHoldingButton(Button.INTERACT)
     @Disabled
     
-    createDummy(Hero.LIFEWEAVER, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
-    #getLastCreatedEntity().startForcingButton(Button.PRIMARY_FIRE)
+    createDummy(Hero.DOOMFIST, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, getOppositeTeam(hostPlayer.getTeam()), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, hostPlayer.getTeam(), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, hostPlayer.getTeam(), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, hostPlayer.getTeam(), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, hostPlayer.getTeam(), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
+    createDummy(Hero.DOOMFIST, hostPlayer.getTeam(), -1, hostPlayer.getPosition(), hostPlayer.getFacingDirection())
 
 rule "Display server performance characteristics":
     @Condition debug

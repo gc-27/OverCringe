@@ -80,3 +80,13 @@ rule "Mauga Patch Notes":
     @Hero mauga
 
     eventPlayer.hero_description = "He's been struggling recently. He misses Baptiste."
+    eventPlayer.weapon_names[0] = "Incendiary Chaingun (Gunny)"
+    eventPlayer.weapon_names[1] = "Volatile Chaingun (Cha-Cha)"
+    eventPlayer.weapon_names[2] = "Overrun"
+    eventPlayer.weapon_names[3] = "Cardiac Overdrive"
+    eventPlayer.weapon_names[5] = "Cage Fight"
+    eventPlayer.weapon_names[6] = "Beserker"
+
+    eventPlayer.patchNotes[2] = ["Enemies near Mauga during Overrun are set on fire."]
+    eventPlayer.patchNotes[3] = ["Now gives Mauga a heart attack if he does not deal 200 damage after use.", "Increases Mauga's movespeed by 25% while active."]
+    eventPlayer.patchNotes[5] = ["Makes Mauga invulnerable.", "Forces Mauga to emote while active."]

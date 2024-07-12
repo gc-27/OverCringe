@@ -1,70 +1,88 @@
 #!mainFile "../main.opy"
 
 def clear_text_from_screen():
-    for eventPlayer.i in range(len(eventPlayer.patchNotesText)):
-        destroyHudText(eventPlayer.patchNotesText[eventPlayer.i])
+    eventPlayer.patchNotesReady = false 
+    for eventPlayer.patchNotesCounter in range(len(eventPlayer.patchNotesText)):
+        destroyHudText(eventPlayer.patchNotesText[eventPlayer.patchNotesCounter])
     eventPlayer.patchNotesText = []
 
-
 def read_patch_notes_data():
-    hudText(eventPlayer, "{} {}".format(heroIcon(eventPlayer.getCurrentHero()), eventPlayer.getCurrentHero()), null, null, HudPosition.LEFT, -100, Color.WHITE, null, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    #Interact Text
+    hudHeader(eventPlayer if not eventPlayer.patchNotesVisible and eventPlayer.isInSpawnRoom() else null, "Press '{0}' to view your hero's changes.".format(buttonString(Button.INTERACT)), HudPosition.LEFT, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY_AND_STRING)
     eventPlayer.patchNotesText.append(getLastCreatedText())
+    #Workshop.codes Link
+    hudSubheader(eventPlayer if not eventPlayer.patchNotesVisible and eventPlayer.isInSpawnRoom() else null, "Changes can be found at workshop.codes/code", HudPosition.LEFT, len(eventPlayer.patchNotesText), Color.YELLOW, HudReeval.VISIBILITY)
+    eventPlayer.patchNotesText.append(getLastCreatedText())
+
+    #Hero
+    hudHeader(eventPlayer if eventPlayer.patchNotesVisible else null, "{} {}".format(heroIcon(eventPlayer.currentHero), eventPlayer.currentHero), HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY)
+    eventPlayer.patchNotesText.append(getLastCreatedText())
+
     if eventPlayer.hero_description:
-        hudText(eventPlayer, null, null, '"{}"'.format(eventPlayer.hero_description), HudPosition.LEFT, -100, null, null, Color.ROSE, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+        hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, '"{}"'.format(eventPlayer.hero_description[0]), HudPosition.TOP, len(eventPlayer.patchNotesText), Color.ROSE, HudReeval.VISIBILITY_AND_STRING)
         eventPlayer.patchNotesText.append(getLastCreatedText())
-    hudText(eventPlayer, null, "─────────────", null, HudPosition.LEFT, -100, null, Color.GRAY, null, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+        hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, '─────────────────────────────', HudPosition.TOP, len(eventPlayer.patchNotesText), Color.GRAY, HudReeval.VISIBILITY_AND_STRING)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+
+    if eventPlayer.hero_general_changes:
+        hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, "General Changes", HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY_AND_STRING)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+        hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, '─────────────────────────', HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY_AND_STRING)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+
+    for eventPlayer.patchNotesCounter in range(0, len(eventPlayer.hero_general_changes)):
+        hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, '{}'.format(eventPlayer.hero_general_changes[eventPlayer.patchNotesCounter]), HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+    
+    if eventPlayer.patchNotes == [["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"]] and not eventPlayer.hero_general_changes:
+        hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, "This character currently has no changes.", HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY_AND_STRING)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+    
+    hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, "\n", HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY)
     eventPlayer.patchNotesText.append(getLastCreatedText())
-    if eventPlayer.health_different:
-        hudText(eventPlayer, null, null, "Health changed to {} health{}{}".format(eventPlayer.health, ", {} armor".format(eventPlayer.armor) if eventPlayer.armor else "", ", {} shields".format(eventPlayer.shields) if eventPlayer.shields else ""), HudPosition.LEFT, -100, Color.WHITE, Color.WHITE, Color.WHITE, HudReeval.SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
-        eventPlayer.patchNotesText.append(getLastCreatedText())
-    for eventPlayer.i in range(0, len(eventPlayer.patchNotes)):
-        if eventPlayer.patchNotes[eventPlayer.i] != []:
-            hudText(
-                eventPlayer, 
-                "{}{}".format(abilityIconString(eventPlayer.currentHero, eventPlayer.patchNotesButtonArray[evalOnce(eventPlayer.i)]), 
-                buttonString(eventPlayer.patchNotesButtonArray[evalOnce(eventPlayer.i)])), 
-                "{}{}{}{}".format(
-                    eventPlayer.patchNotes[evalOnce(eventPlayer.i)][0], 
-                    "\n{}".format(eventPlayer.patchNotes[evalOnce(eventPlayer.i)][1]) if eventPlayer.patchNotes[evalOnce(eventPlayer.i)][1] else "", 
-                    "\n{}".format(eventPlayer.patchNotes[evalOnce(eventPlayer.i)][2]) if eventPlayer.patchNotes[evalOnce(eventPlayer.i)][2] else "", 
-                    "\n{}".format(eventPlayer.patchNotes[evalOnce(eventPlayer.i)][3]) if eventPlayer.patchNotes[evalOnce(eventPlayer.i)][3] else ""
-                    ), 
-                null, 
-                HudPosition.LEFT, 
-                eventPlayer.i,
-                Color.WHITE, 
-                eventPlayer.patchNotesColorArray[evalOnce(eventPlayer.i)], 
-                null, 
-                HudReeval.STRING
-            )
+        
+    eventPlayer.patchNotesCounter = 0
+    eventPlayer.patchNotesCounter2 = 0
+    for eventPlayer.patchNotesCounter in range(0, len(eventPlayer.patchNotes)):
+        if eventPlayer.patchNotes[eventPlayer.patchNotesCounter] != ["not set"]:
+            hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, "{}{}({})".format(abilityIconString(eventPlayer.currentHero, patchNotesButtons[evalOnce(eventPlayer.patchNotesCounter)]) if patchNotesButtons[evalOnce(eventPlayer.patchNotesCounter)] else iconString(Icon.BOLT), eventPlayer.weapon_names[evalOnce(eventPlayer.patchNotesCounter)], buttonString(patchNotesButtons[evalOnce(eventPlayer.patchNotesCounter)]) if patchNotesButtons[evalOnce(eventPlayer.patchNotesCounter)] else "Passive"), HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY_AND_STRING)
             eventPlayer.patchNotesText.append(getLastCreatedText())
+            hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, "─────────────────────────", HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY)
+            eventPlayer.patchNotesText.append(getLastCreatedText())
+            for eventPlayer.patchNotesCounter2 in range(0, len(eventPlayer.patchNotes[eventPlayer.patchNotesCounter])):
+                hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, "{}".format(evalOnce(eventPlayer.patchNotes[eventPlayer.patchNotesCounter][eventPlayer.patchNotesCounter2])), HudPosition.TOP, len(eventPlayer.patchNotesText), patchNotesColors[evalOnce(eventPlayer.patchNotesCounter)], HudReeval.VISIBILITY_AND_STRING)
+                eventPlayer.patchNotesText.append(getLastCreatedText())
+            hudSubheader(eventPlayer if eventPlayer.patchNotesVisible else null, "\n", HudPosition.TOP, len(eventPlayer.patchNotesText), Color.WHITE, HudReeval.VISIBILITY)
+            eventPlayer.patchNotesText.append(getLastCreatedText())
+            
+    
+    eventPlayer.patchNotesCounter2 = len(eventPlayer.patchNotesText)
+    for eventPlayer.patchNotesCounter in range(0, eventPlayer.patchNotesCounter2):
+        hudSubtext(eventPlayer if eventPlayer.patchNotesVisible else null, "                                                                             ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒", HudPosition.LEFT, 0, Color.BLACK, HudReeval.VISIBILITY_AND_STRING)
+        eventPlayer.patchNotesText.append(getLastCreatedText())
+    
+    eventPlayer.patchNotesReady = true
 
+    
 
-
-rule "Show menu in spawn":
+rule "Show menu":
     @Event eachPlayer
-    @Condition eventPlayer.isInSpawnRoom()
-
-    RULE_START
-
-    hudText(eventPlayer, "Press {0} to show see your hero's changes.".format(buttonString(Button.INTERACT)),null, null, HudPosition.LEFT, 0, Color.WHITE, null, null, HudReeval.STRING, SpecVisibility.ALWAYS)
-    eventPlayer.patchNotesText.append(getLastCreatedText())
-    hudText(eventPlayer, null,"Full patch notes can be found at workshop.codes/8GT3J", null, HudPosition.LEFT, 0, null, Color.YELLOW, null, HudReeval.STRING, SpecVisibility.ALWAYS)
-    eventPlayer.patchNotesText.append(getLastCreatedText())
-
-    waitUntil(not eventPlayer.isInSpawnRoom() or eventPlayer.isHoldingButton(Button.INTERACT), 99999)
-
-    clear_text_from_screen()
-
-    if not eventPlayer.isInSpawnRoom() or not eventPlayer.isHoldingButton(Button.INTERACT):
-        return
+    @Condition eventPlayer.isInSpawnRoom() and eventPlayer.isHoldingButton(Button.INTERACT) and eventPlayer.patchNotesReady
+    @Condition eventPlayer.patchNotesReady
 
     eventPlayer.disableGamemodeHud()
-    read_patch_notes_data()
+    eventPlayer.disableHeroHud()
+    eventPlayer.disableGamemodeInWorldUi()
+    eventPlayer.disableScoreboard()
+    eventPlayer.patchNotesVisible = true
 
-    waitUntil(not eventPlayer.isHoldingButton(Button.INTERACT), 99999)
+
+rule "Hide Menu":
+    @Event eachPlayer
+    @Condition not eventPlayer.isHoldingButton(Button.INTERACT) and eventPlayer.patchNotesReady
+
     eventPlayer.enableGamemodeHud()
-    clear_text_from_screen()
-
-    if RULE_CONDITION:
-        goto RULE_START
+    eventPlayer.enableHeroHud()
+    eventPlayer.enableGamemodeInWorldUi()
+    eventPlayer.enableScoreboard()
+    eventPlayer.patchNotesVisible = false

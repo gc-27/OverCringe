@@ -29,14 +29,16 @@ rule "D.Va Self Destruct":
     @Hero dva
     @Condition eventAbility == Button.ULTIMATE
 
-    getPlayers(eventPlayer.getTeam()).addHealthPool(Health.NORMAL, 50, false, false)
+    wait(1)
+    if eventPlayer.isInAlternateForm():
+        getPlayers(eventPlayer.getTeam()).addHealthPool(Health.NORMAL, 50, false, false)
+    
 
 rule "D.Va demech":
     @Event eachPlayer
     @Hero dva
     @Condition eventPlayer.isInAlternateForm()
 
-    smallMessage(eventPlayer, 'test')
     eventPlayer.removeAllHealthPools()
     waitUntil(not eventPlayer.isInAlternateForm(), 99999)
     set_player_health()
@@ -47,5 +49,12 @@ rule "D.Va patch notes":
     @Condition not eventPlayer.isInAlternateForm()
 
     eventPlayer.hero_description = "This hopefully addresses the issue of D.Va dealing too much damage."
+
+    eventPlayer.weapon_names[0] = "Fusion Cannons"
+    eventPlayer.weapon_names[1] = "Defense Matrix"
+    eventPlayer.weapon_names[2] = "Boosters"
+    eventPlayer.weapon_names[3] = "Micro Missiles"
+    eventPlayer.weapon_names[5] = "Self Destruct"
+
     eventPlayer.patchNotes[1] = ["Now lasts indefinitely.", "Now has a 10 second cooldown.", "Slowly reduces move speed while in use."]
-    eventPlayer.patchNotes[5] = ["Eliminating enemies with Self Destruct or Call Mech", " will grant your team 50 overhealth."]
+    eventPlayer.patchNotes[5] = ["Eliminating enemies with Self Destruct", " will grant your team 50 overhealth."]

@@ -77,3 +77,17 @@ rule "Sigma Patch Notes":
     @Hero sigma
 
     eventPlayer.hero_description = "Seriously, what is that melody?"
+
+    eventPlayer.weapon_names[0] = "Hyperspheres"
+    eventPlayer.weapon_names[1] = "Experimental Barrier"
+    eventPlayer.weapon_names[2] = "Kinetic Grasp"
+    eventPlayer.weapon_names[3] = "Accretion"
+    eventPlayer.weapon_names[5] = "Gravitic Flux"
+
+    eventPlayer.hero_general_changes[1] = "No longer affected by gravity."
+    eventPlayer.hero_general_changes[2] = "Control height by using Jump to go up and Crouch to go down."
+
+    eventPlayer.patchNotes[2] = ["Pulls a closeby enemy towards the black hole,", "trapping them and allowing Sigma to move them around."]
+    eventPlayer.patchNotes[3] = ["Sends hit enemies toward Sigma."]
+    eventPlayer.patchNotes[5] = ["Enemies bounce upon landing."]
+

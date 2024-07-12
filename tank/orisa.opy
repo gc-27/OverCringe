@@ -40,8 +40,8 @@ rule "Orisa Javelin Spin":
     eventPlayer.setEnvironmentalKillCreditor(getPlayersInRadius(eventPlayer, 10, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES))
     if not eventPlayer.isUsingAbility1():
         eventPlayer.applyImpulse(eventPlayer.getFacingDirection(), 10, Relativity.TO_WORLD, Impulse.CANCEL_CONTRARY_MOTION)
-    for eventPlayer.i in range(len([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])):
-        (([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.i]).applyImpulse(directionTowards(([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.i], eventPlayer), 1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
+    for eventPlayer.counter in range(len([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])):
+        (([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.counter]).applyImpulse(directionTowards(([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.counter], eventPlayer), 1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
     wait(0)
     if RULE_CONDITION:
         goto RULE_START
@@ -66,3 +66,13 @@ rule "Orisa Patch Notes":
     @Hero orisa
 
     eventPlayer.hero_description = "Orisa isn't mobile enough."
+    eventPlayer.weapon_names[0] = "Augmented Fusion Driver"
+    eventPlayer.weapon_names[1] = "Energy Javelin"
+    eventPlayer.weapon_names[2] = "Fortify"
+    eventPlayer.weapon_names[3] = "Javelin Spin"
+    eventPlayer.weapon_names[5] = "Terra Surge"
+
+    eventPlayer.patchNotes[1] = ["Orisa now throws herself alongside the Javelin."]
+    eventPlayer.patchNotes[2] = ["Now grants Orisa 500 Overhealth.", "Roots Orisa to the ground while active."]
+    eventPlayer.patchNotes[3] = ["Pulls enemies towards Orisa while active.", "Grants Orisa forward facing flight while active."]
+    eventPlayer.patchNotes[5] = ["Grants teammates nearby Orisa Overhealth while charging."]

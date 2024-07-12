@@ -73,9 +73,16 @@ rule "Doomfist Patch Notes":
     @Hero doomfist
     
     eventPlayer.hero_description = "After years of powerblocking, he finally broke the gauntlet."
+
+    eventPlayer.weapon_names[0] = "Hand Cannon"
+    eventPlayer.weapon_names[1] = "Rocket Punch"
+    eventPlayer.weapon_names[2] = "Seismic Slam"
+    eventPlayer.weapon_names[3] = "Power Block"
+    eventPlayer.weapon_names[5] = "Meteor Strike"
+    eventPlayer.weapon_names[6] = "The Best Defense..."
+
     eventPlayer.patchNotes[0] = ["No longer has an ammo requirement."]
     eventPlayer.patchNotes[1] = ["Move speed reduced to 10% while punching.", "Deals 200% more knockback.", "Has a small delay before you can move after punching."]
     eventPlayer.patchNotes[2] = ["Travel speed increased to 250%."]
     eventPlayer.patchNotes[3] = ["Knocks an enemy in front of Doomfist down for one second."]
     eventPlayer.patchNotes[5] = ["Knocks enemies in the blast radius down for 2 seconds.", "Knocks enemies in the blast radius away.", "Doomfist can now be seen by all players while using."]
-    

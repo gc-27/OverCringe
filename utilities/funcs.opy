@@ -49,10 +49,15 @@ def enable_abilities():
     eventPlayer.setCrouchEnabled(true)
     eventPlayer.setJumpEnabled(true)
 
+def clear_player_health():
+    eventPlayer.health = 0
+    eventPlayer.shields = 0
+    eventPlayer.armor = 0
+    eventPlayer.removeAllHealthPools()
+
 def set_player_health():
     if eventPlayer.isInSpawnRoom():
         eventPlayer.player_spawn_pos = eventPlayer.getPosition()
-        wait()
         eventPlayer.teleport(eventPlayer.getPosition() + 100 * Vector.UP)
         waitUntil(not (eventPlayer.isInSpawnRoom() or eventPlayer.hasStatusEffect(Status.INVINCIBLE) or eventPlayer.hasStatusEffect(Status.UNKILLABLE)), 1)
     eventPlayer.setStatusEffect(eventPlayer, Status.UNKILLABLE, Math.INFINITY)
@@ -69,7 +74,6 @@ def set_player_health():
         eventPlayer.teleport(eventPlayer.player_spawn_pos)
         eventPlayer.player_spawn_pos = null
 
-
     if eventPlayer.health:
         eventPlayer.addHealthPool(Health.NORMAL, max(1, eventPlayer.health - 1), true, true)
     if eventPlayer.armor:
@@ -78,12 +82,6 @@ def set_player_health():
         eventPlayer.addHealthPool(Health.SHIELDS, max(1, eventPlayer.shields), true, true)
 
     eventPlayer.clearStatusEffect(Status.UNKILLABLE)
-
-def clear_player_health():
-    eventPlayer.health = 0
-    eventPlayer.shields = 0
-    eventPlayer.armor = 0
-    eventPlayer.removeAllHealthPools()
 
 
 def check_and_set_hp():
@@ -95,7 +93,7 @@ def check_and_set_hp():
         goto RULE_START
     if eventPlayer.getHealthOfType(Health.SHIELDS) != eventPlayer.shields:
         goto RULE_START
-    smallMessage(eventPlayer, "SETTING HEALTH POOL TO CORRECT VALUE!")
+    smallMessage(eventPlayer, "Health set to correct value, sorry for the jump!")
 
 def clear_status_effects():
     eventPlayer.clearStatusEffect(Status.ASLEEP)

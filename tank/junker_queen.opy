@@ -48,8 +48,8 @@ rule "Junker Queen Commanding Shout":
     @Condition eventPlayer.isUsingAbility1()
 
     eventPlayer.var1 = getPlayersInRadius(eventPlayer, 10, getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES_AND_ENEMY_BARRIERS)
-    for eventPlayer.i in range(0, len(eventPlayer.var1)):
-        damage(eventPlayer.var1[eventPlayer.i], eventPlayer, eventPlayer.var1[eventPlayer.i].getHealth()/4)
+    for eventPlayer.counter in range(0, len(eventPlayer.var1)):
+        damage(eventPlayer.var1[eventPlayer.counter], eventPlayer, eventPlayer.var1[eventPlayer.counter].getHealth()/4)
 
 
 rule "Junker Queen Carnage Check":
@@ -92,7 +92,7 @@ rule "Junker Queen Rampage Mines":
 
     wait(0.5)
 
-    for eventPlayer.i in range(0,25):
+    for eventPlayer.counter in range(0,25):
         createProjectile(Projectile.ROADHOG_SCRAP_BALL, eventPlayer, null, null, Relativity.TO_PLAYER, ModifyHealth.DAMAGE, getOppositeTeam(eventPlayer.getTeam()), 25, 1, 3, DynamicEffect.BAD_EXPLOSION, DynamicEffect.BUFF_EXPLOSION_SOUND, 0, 10, 2, 5, 10, 9.68)
         wait(0.03)
 
@@ -102,7 +102,16 @@ rule "Junker Queen Patch Notes":
     @Hero junkerQueen
     
     eventPlayer.hero_description = "I thought it was too difficult to hit Scattergun, so I got rid of it."
+
+    eventPlayer.weapon_names[0] = "Scattergun"
+    eventPlayer.weapon_names[1] = "Jagged Blade"
+    eventPlayer.weapon_names[2] = "Commanding Shout"
+    eventPlayer.weapon_names[3] = "Carnage"
+    eventPlayer.weapon_names[5] = "Rampage"
+    eventPlayer.weapon_names[6] = "Adrenaline Rush"
+
     eventPlayer.patchNotes[0] = ["Removed, and replaced with Carnage. Do not look in the bottom right corner."]
     eventPlayer.patchNotes[1] = ["Drops out of Junker Queen's hand on use instead of being thrown.", "When pulled, Junker Queen will move towards the knife.", "Junker Queen will phase through walls to get to the knife."]
     eventPlayer.patchNotes[2] = ["Now damages nearby enemies for 25% of their current health."]
     eventPlayer.patchNotes[3] = ["Missing Carnage will now deal 200 damage to Junker Queen."]
+    eventPlayer.patchNotes[5] = ["Now drops mines as Junker Queen charges forward."]

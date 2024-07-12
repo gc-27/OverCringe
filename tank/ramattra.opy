@@ -63,4 +63,14 @@ rule "Ramattra Patch Notes":
     @Event eachPlayer
     @Hero ramattra
 
-    eventPlayer.hero_description = "Ramattra is a very situational hero. I think he should be viable in ALL of them."
+    eventPlayer.hero_description = "Now Ram is truly a dive tank!"
+    eventPlayer.weapon_names[0] = "Void Accelerator (Omnic Form)"
+    eventPlayer.weapon_names[1] = "Void Barrier (Omnic Form)"
+    eventPlayer.weapon_names[2] = "Nemesis Form"
+    eventPlayer.weapon_names[3] = "Ravenous Vortex"
+    eventPlayer.weapon_names[5] = "Annihilation"
+
+    eventPlayer.patchNotes[1] = ["Holding right click to create a barrier will grant Ramattra a 50% speed boost."]
+    eventPlayer.patchNotes[2] = ["Jump Height while in Nemesis Form increased by 200%."]
+    eventPlayer.patchNotes[3] = ["Now sends enemies upward.", "Enemies are slingshotted up at the end of the vortex."]
+    eventPlayer.patchNotes[5] = ["Movement speed in Annihilation reduced by 50%.", "Grants Ramattra an additional 250 armor.", "Pummel and Ravenous Vortex are disabled while in use.", "Damage dealt increased by 200%.", "Duration increased to 6 seconds."]

@@ -65,3 +65,13 @@ rule "Winston Patch Notes":
     @Hero winston
 
     eventPlayer.hero_description = "Guxue's dream."
+
+    eventPlayer.weapon_names[0] = "Tesla Cannon"
+    eventPlayer.weapon_names[1] = "Tesla Cannon (Secondary Fire)"
+    eventPlayer.weapon_names[2] = "Jump Pack"
+    eventPlayer.weapon_names[3] = "Barrier Projector"
+    eventPlayer.weapon_names[5] = "Primal Rage"
+
+    eventPlayer.patchNotes[1] = ["Jumps between enemies, up to five times.", "Jumped attacks deal 50% less damage each jump."]
+    eventPlayer.patchNotes[2] = ["Deals 100 extra damage to any enemies you land directly on.", "Cooldown during Primal Rage removed."]
+    eventPlayer.patchNotes[5] = ["Press Secondary Fire (Default bound to Right Click) to shoot out a", "small bouncy ball that can knock enemies away."]

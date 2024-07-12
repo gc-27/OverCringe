@@ -1,7 +1,8 @@
 #!mainFile "../main.opy"
 
 globalvar debug = createWorkshopSetting(bool, "DEVELOPMENT", "DEBUG", true, 0)
-globalvar debug_dummy_bots
+globalvar patchNotesButtons = [Button.PRIMARY_FIRE, Button.SECONDARY_FIRE, Button.ABILITY_1, Button.ABILITY_2, Button.CROUCH, Button.ULTIMATE, null]
+globalvar patchNotesColors = [Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.SKY_BLUE, Color.ORANGE]
 
 playervar moveSpeed = 100
 playervar prevMoveSpeed
@@ -26,11 +27,15 @@ playervar health
 playervar armor
 playervar shields
 
+playervar weapon_names = ["not set", "not set", "not set", "not set", "not set", "not set", "not set", "not set"] #0: Primary Fire Name, #1: Secondary Fire Name, #2: Ability 1 Name, #3: Ability 2 Name, #4: Crouch Name, #5: Ultimate Name, #6: Passive
 playervar hero_description
-
-playervar i
-
-playervar patchNotesColorArray = [Color.WHITE, Color.WHITE, Color.YELLOW, Color.YELLOW, Color.YELLOW, Color.SKY_BLUE, Color.RED]
-playervar patchNotesButtonArray = [Button.PRIMARY_FIRE, Button.SECONDARY_FIRE, Button.ABILITY_1, Button.ABILITY_2, Button.CROUCH, Button.ULTIMATE, null]
-playervar patchNotes = [[], [], [], [], [], [], [], []] 
+playervar hero_general_changes
+playervar patchNotesCounter
+playervar patchNotesCounter2 
+playervar patchNotesVisible
+playervar patchNotesReady
 playervar patchNotesText = []
+playervar patchNotes = []
+
+
+

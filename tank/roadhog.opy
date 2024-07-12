@@ -68,7 +68,6 @@ rule "Roadhog Belly Flop":
     eventPlayer.gravity += 200
     waitUntil(eventPlayer.isOnGround() or not eventPlayer.canUseAbilities, 99999)
     if not eventPlayer.canUseAbilities:
-        wait(0.5)
         belly_flop_end()
         return
     playEffect(getAllPlayers(), DynamicEffect.RING_EXPLOSION, eventPlayer.getTeam(), eventPlayer.getPosition(), max(2 * eventPlayer.var2, 5) * 2)
@@ -122,3 +121,14 @@ rule "Roadhog Patch Notes":
     @Hero roadhog
 
     eventPlayer.hero_description = "Roadhog has been juicing."
+    eventPlayer.weapon_names[0] = "Scrap Gun"
+    eventPlayer.weapon_names[1] = "Take a Breather"
+    eventPlayer.weapon_names[2] = "Chain Hook"
+    eventPlayer.weapon_names[3] = "Pig Pen"
+    eventPlayer.weapon_names[5] = "Whole Hog"
+    eventPlayer.weapon_names[6] = "New Passive: {} Stank".format(iconString(Icon.POISON))
+
+    eventPlayer.patchNotes[1] = ["Move speed increased by 25% while in use."]
+    eventPlayer.patchNotes[3] = ["Replaced with New Ability: {} Belly Flop".format(iconString(Icon.ARROW_DOWN)), "Roadhog jumps and slams on the ground,", "Creating a damaging blast that increases with height", "Stuns enemies Roadhog directly lands on."]
+    eventPlayer.patchNotes[4] = ["Sends Roadhog Backward while using Whole Hog"]
+    eventPlayer.patchNotes[6] = ["Enemies near Roadhog take damage that slowly increases over time."]
