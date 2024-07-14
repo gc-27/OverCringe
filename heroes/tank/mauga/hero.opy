@@ -13,9 +13,9 @@ rule "Mauga Overrun Usage":
     @Condition eventPlayer.isUsingAbility1()
     
     wait(0.71)
-    eventPlayer.ccimmune = true
+    eventPlayer.cc_immune = true
     waitUntil(not eventPlayer.isUsingAbility1(), 4)
-    eventPlayer.ccimmune = false
+    eventPlayer.cc_immune = false
 
 rule "Mauga Overrun":
     @Event eachPlayer
@@ -31,7 +31,7 @@ rule "Mauga Cardiac Overdrive":
     @Hero mauga
     @Condition eventPlayer.isUsingAbility2()
 
-    eventPlayer.moveSpeed += 25
+    eventPlayer.move_speed += 25
     waitUntil(not eventPlayer.isUsingAbility2(), 8)
     if eventPlayer.var1 < 200:
         if not eventPlayer.isDead():
@@ -40,7 +40,7 @@ rule "Mauga Cardiac Overdrive":
             eventPlayer.setStatusEffect(null, Status.STUNNED, 5)
             eventPlayer.startDoT(null, 5, 50)
     eventPlayer.var1 = 0
-    eventPlayer.moveSpeed -= 25
+    eventPlayer.move_speed -= 25
     
 rule "Mauga Cardiac Overdrive damage":
     @Event playerDealtDamage

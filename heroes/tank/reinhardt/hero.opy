@@ -13,11 +13,11 @@ rule "Reinhardt Charge":
     @Condition eventPlayer.isUsingAbility1()
     
     eventPlayer.setDamageDealt(500)
-    eventPlayer.moveSpeed -= 90
+    eventPlayer.move_speed -= 90
     waitUntil(not eventPlayer.isUsingAbility1(), 9999)
     wait()
     eventPlayer.setDamageDealt(100)
-    eventPlayer.moveSpeed += 90
+    eventPlayer.move_speed += 90
 
 rule "Reinhardt Fire Strike":
     @Event playerDealtDamage

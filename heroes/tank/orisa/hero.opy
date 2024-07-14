@@ -21,12 +21,12 @@ rule "Orisa Fortify":
     @Hero orisa
     @Condition eventPlayer.isUsingAbility1() == true
     
-    eventPlayer.ccimmune = true
+    eventPlayer.cc_immune = true
     eventPlayer.addHealthPool(Health.NORMAL, 425, false, true)
     eventPlayer.var1 = getLastCreatedHealthPool()
     eventPlayer.setStatusEffect(null, Status.ROOTED, 5)
     waitUntil(not eventPlayer.isUsingAbility1(), 99999)
-    eventPlayer.ccimmune = false
+    eventPlayer.cc_immune = false
     eventPlayer.clearStatusEffect(Status.ROOTED)
     removeHealthPool(eventPlayer.var1)
 
@@ -40,7 +40,7 @@ rule "Orisa Javelin Spin":
     if not eventPlayer.isUsingAbility1():
         eventPlayer.applyImpulse(eventPlayer.getFacingDirection(), 10, Relativity.TO_WORLD, Impulse.CANCEL_CONTRARY_MOTION)
     for eventPlayer.counter in range(len([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])):
-        (([i for i in [player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if not player.ccimmune] if distance(i, eventPlayer) < 15])[eventPlayer.counter]).applyImpulse(directionTowards(([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.counter], eventPlayer), 1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
+        (([i for i in [player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if not player.cc_immune] if distance(i, eventPlayer) < 15])[eventPlayer.counter]).applyImpulse(directionTowards(([player for player in getLivingPlayers(getOppositeTeam(eventPlayer.getTeam())) if distance(player, eventPlayer) < 15])[eventPlayer.counter], eventPlayer), 1, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
     wait(0)
     if RULE_CONDITION:
         goto RULE_START

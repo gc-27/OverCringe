@@ -17,9 +17,9 @@ rule "D.Va matrix infinity":
     while eventPlayer.isFiringSecondaryFire():
         eventPlayer.setAbilityResource(Button.SECONDARY_FIRE, 100)
         eventPlayer.var1 -= 0.1
-        eventPlayer.moveSpeed -= 0.1
+        eventPlayer.move_speed -= 0.1
         wait()
-    eventPlayer.moveSpeed -= eventPlayer.var1
+    eventPlayer.move_speed -= eventPlayer.var1
     eventPlayer.setAbilityCooldown(Button.SECONDARY_FIRE, 10)
 
 

@@ -29,6 +29,6 @@ rule "Cassidy Marksman":
     @Hero cassidy
     @Condition eventWasCriticalHit
 
-    eventPlayer.moveSpeed += 25
+    eventPlayer.move_speed += 25
     wait(2)
-    eventPlayer.moveSpeed -= 25
+    eventPlayer.move_speed -= 25

@@ -26,8 +26,8 @@ rule "Bastion Configuration: Assault":
     eventPlayer.disallowButton(Button.JUMP)
     wait(1)
     eventPlayer.startForcingThrottle(0, 1, 0, 1, 0, 0.5)
-    eventPlayer.moveSpeed += 53.87
+    eventPlayer.move_speed += 53.87
     waitUntil(not eventPlayer.isUsingAbility1(), 6)
     eventPlayer.allowButton(Button.JUMP)
-    eventPlayer.moveSpeed -= 53.87
+    eventPlayer.move_speed -= 53.87
     eventPlayer.stopForcingThrottle()

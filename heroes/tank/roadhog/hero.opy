@@ -43,7 +43,7 @@ rule "Roadhog Belly Flop":
     @Hero roadhog
     @Condition eventPlayer.isHoldingButton(Button.ABILITY_2)
     @Condition eventPlayer.getAbilityCooldown(Button.ABILITY_2) == 0
-    @Condition eventPlayer.canUseAbilities
+    @Condition is_silenced(eventPlayer)
     @Condition not eventPlayer.isFiringSecondaryFire()
     @Condition not eventPlayer.isUsingAbility1()
     @Condition not eventPlayer.isCommunicatingEmote()
@@ -65,13 +65,12 @@ rule "Roadhog Belly Flop":
     wait(0.5)
     chase(eventPlayer.chase_var_1, 15, rate=5, ChaseReeval.DESTINATION_AND_RATE)
     eventPlayer.gravity += 200
-    waitUntil(eventPlayer.isOnGround() or not eventPlayer.canUseAbilities, 99999)
-    if not eventPlayer.canUseAbilities:
+    waitUntil(eventPlayer.isOnGround() or not is_silenced(eventPlayer), 99999)
+    if not is_silenced(eventPlayer):
         belly_flop_end()
         return
     playEffect(getAllPlayers(), DynamicEffect.RING_EXPLOSION, eventPlayer.getTeam(), eventPlayer.getPosition(), max(2 * eventPlayer.chase_var_1, 5) * 2)
     playEffect(getAllPlayers(), DynamicEffect.RING_EXPLOSION, eventPlayer.getTeam(), eventPlayer.getPosition(), max(eventPlayer.chase_var_1, 2.5))
-    #playEffect(getAllPlayers(), DynamicEffect.DOOMFIST_METEOR_STRIKE_IMPACT, eventPlayer.getTeam(), eventPlayer.getPosition(), 1)
     playEffect(getAllPlayers(), DynamicEffect.DEBUFF_IMPACT_SOUND, eventPlayer.getTeam(), eventPlayer.getPosition(), 250)
     playEffect(getAllPlayers(), DynamicEffect.EXPLOSION_SOUND, eventPlayer.getTeam(), eventPlayer.getPosition(), 250)
     damage(getPlayersInRadius(eventPlayer, max(2 * eventPlayer.chase_var_1, 5), getOppositeTeam(eventPlayer.getTeam()), LosCheck.SURFACES_AND_ENEMY_BARRIERS), eventPlayer, max(25, 5 * eventPlayer.chase_var_1))
@@ -88,9 +87,9 @@ rule "Roadhog Take A Breather":
     @Hero roadhog
     @Condition eventPlayer.isFiringSecondaryFire()
 
-    eventPlayer.moveSpeed += 25
+    eventPlayer.move_speed += 25
     waitUntil(not eventPlayer.isFiringSecondaryFire(), 4)
-    eventPlayer.moveSpeed -= 25
+    eventPlayer.move_speed -= 25
 
 
 rule "Roadhog Whole Hog":

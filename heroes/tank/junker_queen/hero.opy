@@ -16,7 +16,7 @@ rule "Junker Queen Jagged Blade ":
     
     eventPlayer.chase_var_1 = eventPlayer.getEyePosition()
     chase(eventPlayer.chase_var_1, evalOnce(raycast(eventPlayer.getPosition(), eventPlayer.getPosition() + Vector.DOWN, null, null, false).getHitPosition()), rate=5, ChaseReeval.DESTINATION_AND_RATE)
-    waitUntil(eventPlayer.getAbilityCooldown(Button.SECONDARY_FIRE) <= 2.0 or eventPlayer.isHoldingButton(Button.SECONDARY_FIRE) and eventPlayer.canUseAbilities, 4)
+    waitUntil(eventPlayer.getAbilityCooldown(Button.SECONDARY_FIRE) <= 2.0 or eventPlayer.isHoldingButton(Button.SECONDARY_FIRE) and is_silenced(eventPlayer), 4)
     eventPlayer.chase_var_2 = eventPlayer.getPosition()
     chase(eventPlayer.chase_var_2, eventPlayer.chase_var_1, rate=50, ChaseReeval.DESTINATION_AND_RATE)
     eventPlayer.startForcingPosition(eventPlayer.chase_var_2, true)
@@ -51,9 +51,9 @@ rule "Junker Queen Carnage Check":
     @Condition eventPlayer.isUsingAbility2() == true
     
     eventPlayer.var2 = true
-    eventPlayer.moveSpeed -= 25
+    eventPlayer.move_speed -= 25
     waitUntil(not eventPlayer.isUsingAbility2(), 99999)
-    eventPlayer.moveSpeed += 25
+    eventPlayer.move_speed += 25
     if eventPlayer.var2:
         damage(eventPlayer, null, 200)
 

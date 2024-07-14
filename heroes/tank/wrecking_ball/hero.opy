@@ -15,9 +15,9 @@ rule "Wrecking Ball Roll":
     
     eventPlayer.setDamageDealt(125)
     eventPlayer.setDamageReceived(75)
-    eventPlayer.moveSpeed -= 50
+    eventPlayer.move_speed -= 50
     waitUntil(eventPlayer.isInAlternateForm(), 99999)
-    eventPlayer.moveSpeed += 50
+    eventPlayer.move_speed += 50
     eventPlayer.setDamageDealt(100)
     eventPlayer.setDamageReceived(75)
 

@@ -13,10 +13,10 @@ rule "Doomfist Rocket Punch":
     @Hero doomfist
     @Condition eventPlayer.isFiringSecondaryFire()
 
-    eventPlayer.moveSpeed -= 90
+    eventPlayer.move_speed -= 90
     waitUntil(not eventPlayer.isFiringSecondaryFire(), 2)
     wait(0.1)
-    eventPlayer.moveSpeed += 90
+    eventPlayer.move_speed += 90
 
 rule "Doomfist Seismic Slam":
     @Event eachPlayer
@@ -25,10 +25,10 @@ rule "Doomfist Seismic Slam":
 
     eventPlayer.applyImpulse(eventPlayer.getFacingDirection(), 50, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
     eventPlayer.gravity += 400
-    eventPlayer.moveSpeed += 150 
+    eventPlayer.move_speed += 150 
     waitUntil(not eventPlayer.isUsingAbility1(), 9999)
     eventPlayer.gravity -= 400
-    eventPlayer.moveSpeed -= 150
+    eventPlayer.move_speed -= 150
 
 rule "Doomfist Power Block Knockdown":
     @Event eachPlayer

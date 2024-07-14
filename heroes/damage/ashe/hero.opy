@@ -15,11 +15,10 @@ rule "Ashe Headhunter":
     eventPlayer.setAbilityCooldown(Button.ABILITY_1, eventPlayer.getAbilityCooldown(Button.ABILITY_1) - 2)
 
 rule "Ashe Dynamite":
-    @Event playerTookDamage
-    @Condition attacker.currentHero == Hero.ASHE
+    @Event playerDealtDamage
+    @Hero ashe
     @Condition eventAbility == Button.ABILITY_2
     @Condition eventDamage >= 10
 
-    if not victim.ccimmune:
-        victim.applyImpulse(Vector.UP, 5, Relativity.TO_PLAYER, Impulse.INCORPORATE_CONTRARY_MOTION)
-        victim.applyImpulse(eventDirection, 5 if victim.currentHero in getTankHeroes() else 10, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)
+    victim.applyImpulse(Vector.UP, 5, Relativity.TO_PLAYER, Impulse.INCORPORATE_CONTRARY_MOTION)
+    victim.applyImpulse(eventDirection, 5 if is_tank(victim) else 10, Relativity.TO_WORLD, Impulse.INCORPORATE_CONTRARY_MOTION)

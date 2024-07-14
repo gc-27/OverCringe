@@ -13,6 +13,6 @@ rule "Hanzo Patch Notes":
     eventPlayer.passive_name = "Lunge"
     eventPlayer.patch_notes_buttons[6] = Button.JUMP
 
-    eventPlayer.primary_fire_notes  = ["Can no longer deal headshot damage.", "Base damage increased to 125."]
-    eventPlayer.ability_2_notes = ["No longer deals headshot damage.", "Arrow damage increased to 100"]
+    eventPlayer.primary_fire_notes  = ["No longer deal headshot damage.", "Base damage increased to 125."]
+    eventPlayer.ability_2_notes = ["No longer deals headshot damage."]
     eventPlayer.passive_notes = ["Cooldown removed", "Casting Lunge deals 10 damage to Hanzo.", "Being 10 HP or less makes Hanzo unable to jump."]

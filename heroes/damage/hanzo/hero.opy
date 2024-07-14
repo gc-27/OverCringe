@@ -6,7 +6,7 @@ rule "Hanzo Init":
     
     set_health_pool(eventPlayer, 200, 0, 0)
 
-rule "Primary Fire Headshot Fix":
+rule "Hanzo Damage Headshot Fix":
     @Event playerDealtDamage
     @Hero hanzo
     
@@ -14,8 +14,6 @@ rule "Primary Fire Headshot Fix":
         damage(victim, attacker, 10 if eventWasCriticalHit else eventDamage * 2 + 10)
     elif eventAbility == null:
         return
-    elif eventAbility == Button.ABILITY_2:
-        damage(victim, attacker, 50 if eventWasCriticalHit else eventDamage * 2 + 50)
     else:
         damage(victim, attacker, eventDamage)
 
@@ -26,7 +24,7 @@ rule "Hanzo Lunge":
 
     damage(eventPlayer, null, 10)
 
-rule "Disable Hanzo Lunge if 10 HP":
+rule "Hanzo Disable Lunge if 10 HP":
     @Event eachPlayer
     @Hero hanzo
     @Condition eventPlayer.getHealth() <= 10

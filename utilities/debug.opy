@@ -76,4 +76,4 @@ rule "Debug World Text":
     @Event eachPlayer
     @Condition debug
 
-    createInWorldText(getAllPlayers(), eventPlayer.getHealth(), eventPlayer.getEyePosition() + vect(0, 0.5, 0), 1, Clip.SURFACES, WorldTextReeval.VISIBILITY_POSITION_AND_STRING, Color.WHITE,  SpecVisibility.ALWAYS)
+    createInWorldText(getAllPlayers(), updateEveryTick(eventPlayer.getHealth()), eventPlayer.getEyePosition() + vect(0, 0.5, 0), 1, Clip.SURFACES, WorldTextReeval.VISIBILITY_POSITION_STRING_AND_COLOR, Color.WHITE,  SpecVisibility.ALWAYS)

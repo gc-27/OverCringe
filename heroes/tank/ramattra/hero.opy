@@ -15,9 +15,9 @@ rule "Ramattra Void Barrier":
     @Condition eventPlayer.isUsingUltimate() != true
     @Condition eventPlayer.isMoving() == true
     
-    eventPlayer.moveSpeed += 50
+    eventPlayer.move_speed += 50
     waitUntil(not eventPlayer.isFiringSecondaryFire(), 99999)
-    eventPlayer.moveSpeed -= 50
+    eventPlayer.move_speed -= 50
 
 
 rule "Ramattra Nemesis Form":
@@ -47,7 +47,7 @@ rule "Ramattra Annihilation":
     @Hero ramattra
     @Condition eventPlayer.isUsingUltimate() == true
     
-    eventPlayer.moveSpeed -= 50
+    eventPlayer.move_speed -= 50
     eventPlayer.setDamageDealt(300)
 
     eventPlayer.setPrimaryFireEnabled(false)
@@ -65,7 +65,7 @@ rule "Ramattra Annihilation":
     eventPlayer.health_pools[2] = getLastCreatedHealthPool()
     removeHealthPool(eventPlayer.health_pools[1])
 
-    eventPlayer.moveSpeed += 50
+    eventPlayer.move_speed += 50
     eventPlayer.setDamageDealt(100)
 
     eventPlayer.setPrimaryFireEnabled(true)

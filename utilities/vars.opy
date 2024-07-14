@@ -1,17 +1,15 @@
 #!mainFile "../main.opy"
 
-playervar currentHero
+playervar current_hero
 playervar health_pools
+playervar hero_data
+#!define move_speed hero_data[1]
+#!define prev_move_speed hero_data[2]
+#!define gravity hero_data[3]
+#!define prev_gravity hero_data[4]
+#!define cc_immune hero_data[5]
 
-playervar moveSpeed = 100
-playervar prevMoveSpeed
-
-playervar gravity = 100
-playervar prevGravity
-
-playervar canUseAbilities = true
-playervar ccimmune = false
-
+playervar self_damage_mod
 playervar effects
 playervar counter
 
@@ -22,8 +20,6 @@ playervar game_mode_var
 
 playervar chase_var_1
 playervar chase_var_2
-
-playervar self_damage_mod
 
 playervar player_spawn_pos
 

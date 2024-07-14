@@ -13,11 +13,11 @@ rule "Zarya Particle Barrier":
     @Hero zarya
     @Condition eventPlayer.isUsingAbility1()
     
-    eventPlayer.moveSpeed += 25
+    eventPlayer.move_speed += 25
     waitUntil(not eventPlayer.isUsingAbility1(), 4)
     eventPlayer.setAbility1Enabled(false)
     eventPlayer.addHealthPool(Health.NORMAL, 50, false, false)
-    eventPlayer.moveSpeed -= 25
+    eventPlayer.move_speed -= 25
     wait(2)
     eventPlayer.setAbility1Enabled(true)
 
@@ -27,7 +27,7 @@ rule "Zarya Gravity Grenade":
     @Hero zarya
     @Condition eventPlayer.isHoldingButton(Button.ULTIMATE)
     @Condition eventPlayer.getUltCharge() == 100
-    @Condition eventPlayer.canUseAbilities
+    @Condition is_silenced(eventPlayer)
 
     eventPlayer.setUltCharge(0)
 
@@ -39,11 +39,11 @@ rule "Zarya Gravity Grenade":
     eventPlayer.setUltEnabled(true)
 
 rule "Zarya Gravity Grenade Hit":
-    @Event playerTookDamage
-    @Condition attacker.currentHero == Hero.ZARYA
+    @Event playerDealtDamage
+    @Hero zarya
     @Condition eventAbility == null
 
-    if victim.ccimmune:
+    if victim.cc_immune:
         return
     victim.gravity -= 100
     victim.setStatusEffect(attacker, Status.ROOTED, 4)
