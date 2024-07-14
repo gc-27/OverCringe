@@ -1,12 +1,5 @@
 #!mainFile "../main.opy"
 
-rule "Global Init":
-    @Event global
-    if debug:
-        pass
-    else:
-        #disableInspector()
-
 rule "Player Has Silencing Effect - Set canUseAbilities False":
     @Event eachPlayer
     @Condition eventPlayer.hasStatusEffect(Status.ASLEEP) or eventPlayer.hasStatusEffect(Status.FROZEN) or eventPlayer.hasStatusEffect(Status.HACKED) or eventPlayer.hasStatusEffect(Status.KNOCKED_DOWN) or eventPlayer.hasStatusEffect(Status.STUNNED) or eventPlayer.isDead()
@@ -40,23 +33,27 @@ rule "Update Gravity":
         wait(0.25)
     while RULE_CONDITION
 
+rule "Health Pack Taken - Remove Burn Status + DoT":
+    @Event playerReceivedHealing
+    @Condition eventWasHealthPack
+
+    healee.clearStatusEffect(Status.BURNING)
+    healee.stopAllDoT()
+
 rule "Hero Changed - Reset player vars and HP":
     @Event eachPlayer
     @Condition eventPlayer.currentHero != eventPlayer.getCurrentHero()
 
-    eventPlayer.currentHero = eventPlayer.getCurrentHero()
 
-    eventPlayer.patchNotes = [["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"], ["not set"], "not set"] 
-    eventPlayer.hero_description = "This hero does not have a description!"
-    eventPlayer.hero_general_changes = []
+    stopDamageModification(eventPlayer.self_damage_mod)
+    eventPlayer.stopAcceleration()
+    eventPlayer.stopForcingThrottle()
+    eventPlayer.stopThrottleInDirection()
+    eventPlayer.stopTransformingThrottle()
 
 
     eventPlayer.moveSpeed = 100
-    eventPlayer.gravity = 100
-    eventPlayer.health_different = false
-    eventPlayer.health = 0
-    eventPlayer.armor = 0
-    eventPlayer.shields = 0
+    eventPlayer.gravity = 100   
     
     enable_inputs()
     enable_abilities()
@@ -67,14 +64,11 @@ rule "Hero Changed - Reset player vars and HP":
 
     eventPlayer.setProjectileSpeed(100)
     eventPlayer.setJumpVerticalSpeed(100)
-
-    clear_player_health()
-    wait() #Wait one tick for player to set up
-    if eventPlayer.health_different:
-        check_and_set_hp()
-        eventPlayer.hero_general_changes[0] = "Health pool changed to {} Health{}{}".format(eventPlayer.health, ", {} Armor".format(eventPlayer.armor) if eventPlayer.armor else "", ", {} Shields".format(eventPlayer.shields) if eventPlayer.shields else "")
     
-    clear_text_from_screen()
-    read_patch_notes_data()
+    clear_player_health()
+    wait()
+    eventPlayer.currentHero = eventPlayer.getCurrentHero()
+    if eventPlayer.health:
+        check_and_set_hp()
 
     

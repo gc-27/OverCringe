@@ -1,8 +1,5 @@
 #!mainFile "../main.opy"
 
-#!extension buffStatusEffects
-#!extension projectiles
-
 def disable_inputs():
     eventPlayer.disallowButton(Button.PRIMARY_FIRE)
     eventPlayer.disallowButton(Button.SECONDARY_FIRE)
@@ -49,6 +46,19 @@ def enable_abilities():
     eventPlayer.setCrouchEnabled(true)
     eventPlayer.setJumpEnabled(true)
 
+def clear_status_effects():
+    eventPlayer.clearStatusEffect(Status.ASLEEP)
+    eventPlayer.clearStatusEffect(Status.BURNING)
+    eventPlayer.clearStatusEffect(Status.FROZEN)
+    eventPlayer.clearStatusEffect(Status.HACKED)
+    eventPlayer.clearStatusEffect(Status.INVINCIBLE)
+    eventPlayer.clearStatusEffect(Status.KNOCKED_DOWN)
+    eventPlayer.clearStatusEffect(Status.PHASED_OUT)
+    eventPlayer.clearStatusEffect(Status.ROOTED)
+    eventPlayer.clearStatusEffect(Status.STUNNED)
+    eventPlayer.clearStatusEffect(Status.UNKILLABLE)
+
+
 def clear_player_health():
     eventPlayer.health = 0
     eventPlayer.shields = 0
@@ -76,10 +86,13 @@ def set_player_health():
 
     if eventPlayer.health:
         eventPlayer.addHealthPool(Health.NORMAL, max(1, eventPlayer.health - 1), true, true)
+        eventPlayer.health_pools[0] = getLastCreatedHealthPool()
     if eventPlayer.armor:
         eventPlayer.addHealthPool(Health.ARMOR, max(1, eventPlayer.armor), true, true)
+        eventPlayer.health_pools[1] = getLastCreatedHealthPool()
     if eventPlayer.shields:
         eventPlayer.addHealthPool(Health.SHIELDS, max(1, eventPlayer.shields), true, true)
+        eventPlayer.health_pools[2] = getLastCreatedHealthPool()
 
     eventPlayer.clearStatusEffect(Status.UNKILLABLE)
 
@@ -93,17 +106,3 @@ def check_and_set_hp():
         goto RULE_START
     if eventPlayer.getHealthOfType(Health.SHIELDS) != eventPlayer.shields:
         goto RULE_START
-    smallMessage(eventPlayer, "Health set to correct value, sorry for the jump!")
-
-def clear_status_effects():
-    eventPlayer.clearStatusEffect(Status.ASLEEP)
-    eventPlayer.clearStatusEffect(Status.BURNING)
-    eventPlayer.clearStatusEffect(Status.FROZEN)
-    eventPlayer.clearStatusEffect(Status.HACKED)
-    eventPlayer.clearStatusEffect(Status.INVINCIBLE)
-    eventPlayer.clearStatusEffect(Status.KNOCKED_DOWN)
-    eventPlayer.clearStatusEffect(Status.PHASED_OUT)
-    eventPlayer.clearStatusEffect(Status.ROOTED)
-    eventPlayer.clearStatusEffect(Status.STUNNED)
-    eventPlayer.clearStatusEffect(Status.UNKILLABLE)
-
